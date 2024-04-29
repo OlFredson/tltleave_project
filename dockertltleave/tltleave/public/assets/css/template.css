@@ -1,0 +1,181 @@
+/**************************************************** Style CSS pour la page template *************************************/
+
+* {
+    font-family: Helvetica, Arial, Verdana ;
+}
+
+
+body {
+    background-color: rgb(174,144,99, 20%);
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    padding: 1rem;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(174,144,99, 70%);
+    border-radius: 1.5rem;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.logo a img {
+    width: 5vw;
+}
+.icon-dropdown {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5vw;
+}
+
+
+.test1 {
+    display: flex;
+}
+
+.bi-bell-fill {
+    color: black;
+    padding-right: 1rem;
+    font-size: 1vw;
+}
+
+/** Style for the button dropdown **/
+.dropdown {
+    position: relative;
+    align-content: space-around;
+    padding-left: 1rem;
+    height: 5vh;
+    width: 10vw;
+}
+
+/** Style for the two elements ( user initials and arrow of the menu dropdown) **/
+.btn-secondary {
+    padding: 1px 0;
+    width: 4vw;
+    height: 4vh;
+    font-size: 1vw;
+    border: none;
+    border-radius: 30px;
+}
+
+/** Style only for the elements user initiales **/
+.dropdown > div > button:first-child {
+    position: relative;
+    background-color: #F8B550;
+    border-radius: 2rem;
+    border: none;
+    color: black;
+}
+
+/*Style uniquement sur la fleche à coté de l'utilisateur OF*/
+.dropdown button:nth-child(2) {
+    margin: 0 -40px;
+    padding-left: 25px;
+    background-color: white;
+    color: black;
+    border-radius: 2rem;
+    border: none;
+    z-index: 1000;
+}
+
+/****************************************************************************/
+
+/********************** Style du sous menu dropdown (fleche) ****************/
+.dropdown-menu{
+    position: absolute;
+    display: none;
+    width: 8vw;
+    padding-top: 1rem;
+    padding-left: 5px;
+    padding-bottom: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 0.25rem;
+    background-color: #F8B550;
+    list-style-type: none;
+    z-index: 100;
+    border-radius: 10px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    color: #000000;
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #000000;
+    font-weight: bolder;
+}
+
+.dropdown-btn {
+    padding-left: 20px;
+}
+/*************************************************************************/
+
+/************************** Part of sidebar ******************************/
+
+main {
+    display: flex;
+    justify-content: space-around;
+    width: 98%;
+    margin: 0;
+
+}
+
+/*.container {
+    width: 100vh;
+}
+*/
+
+#sidebar ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin-top: 2rem;
+    
+}
+
+.circle {
+    height: 5vh; 
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+    margin-bottom: 2rem;
+    list-style-type: none;
+}
+/***************************************************************************/
+
+/**************************** Style part container ******************************/
+
+h2, hr {
+    margin : 1rem 3rem;
+}
+
+hr {
+    border:solid 1px rgb(174,144,99, 20%) ;
+}
+
+#dash-container {
+    flex-grow: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius:3rem;
+    margin-top: 1rem;
+    margin-left: 2rem;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+    width: 100%;
+}                                                                                                                     

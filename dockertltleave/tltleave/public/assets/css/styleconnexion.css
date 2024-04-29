@@ -1,0 +1,46 @@
+/* Style CSS pour mes pages liées aux connexion (Authentification, mot de passe oublié et reset du mdp*/
+
+form {
+    display: flex;
+    justify-content: center;
+}
+
+.group-container {
+    display: flex;
+    margin-top: 18rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgb(174, 144, 99, 25%);
+    height: 35rem;
+    width: 60rem;
+    border-radius: 5rem;
+}
+
+.form-container {
+    width: 20rem;
+    height: 3rem;
+    margin-bottom: 1rem;
+    border: 0em;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow:10% 10px 1px 1px grey;;
+
+}
+
+.form-items {
+    display: flex;
+    width: 20rem;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    font-size: 0.8em;
+}
+
+.button {
+    width: 20rem;
+    height: 3rem;
+    border: 0em;
+    background-color: rgb(174, 144, 99, 80%);
+    border-radius: 1rem;
+}
+

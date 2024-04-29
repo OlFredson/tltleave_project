@@ -1,0 +1,109 @@
+/*************************************************** Style Treatment Requests *********************************************/
+
+/*********************** Style search - sort - display **************/
+
+#search-sort-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 4rem;
+    height: 4rem;
+    width: 90%;
+    background-color: rgb(174,144,99, 10%);
+    border-radius: 1rem;
+}
+
+.sort-display {
+    display: flex;
+    align-items: center;
+    width: 20%;
+}
+
+.sort-by {
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+
+.display-type{
+    font-size: larger;
+    margin-left: 1rem;
+}
+.display-type i:first-of-type{
+    margin-right: 1rem;
+}
+
+
+#user-search {
+    margin-left: 1rem;
+    width: 30%;
+    height: 70%;
+    border-radius: 1rem;
+    border: 1px solid rgb(174,144,99, 30%);
+}
+
+#user-search:focus {
+    border-color:rgb(174,144,99, 30%);
+}
+
+::placeholder {
+    font-size: 1vw;
+    font-style: italic;
+    color: rgb(174,144,99, 50%);
+    text-align: center;
+}
+
+.form-select {
+    border: none;
+    background-color: rgb(174,144,99, 0%);
+}
+
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+/*********************** Style search - sort - display - End **************/
+
+
+/*************************** Request Status ***********************************/
+
+.tabs-container {
+    background-color: rgb(174,144,99, 20%);
+    margin-top: 1rem;
+    margin-left: 4rem;
+    width: 90%;
+    height: 20%;
+    border-radius: 1rem;
+}
+
+.tab-btn {
+    height: 5vh;
+    border: 2px solid rgb(174,144,99, 0%);
+    background-color: rgb(174,144,99, 0%);
+    text-align: left;
+    margin-left: 1rem;
+    padding-bottom: 0;
+    font-size: 1vw;
+}
+
+.tab-btn a {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 0;
+}
+
+.hr-treatment {
+    margin-left: 1rem;
+    width: 80%;
+    margin-top: 0;
+}
+
+/************************************************ Table requests ***********************************************/
+
+.table {
+    background-color: rgb(174,144,99, 10%);
+}

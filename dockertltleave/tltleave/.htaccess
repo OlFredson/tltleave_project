@@ -1,0 +1,8 @@
+RewriteEngine on
+#Active le moteur de réécriture d'URL d'apache
+
+RewriteCond %{REQUEST_URL} !^public/
+#Verifie si l'URL demandée ne commence pas par "public/" et si c'est le cas, la regle de réécriture suivante sera appliquée
+
+RewriteRule ^(.*)$ public/$1 [L]
+#Redirige toutes les requetes vers le sous repertoire "public/"

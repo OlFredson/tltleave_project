@@ -1,0 +1,161 @@
+/**************************************************************************/
+
+/****************************** Grid dashboard ****************************/
+
+.grid-container {
+    display: grid;
+    margin-left: 25rem;
+    margin-top: 2rem;
+    grid-template-columns: repeat(2, 50rem);
+    grid-template-rows: repeat(2, 25rem);
+    gap: 5rem 5rem;
+    text-align: center;
+    font-size: x-large;
+
+}
+
+.grid-item {
+    background-color: rgb(174,144,99, 20%);
+    border-radius: 5rem;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
+/**************************************************************************/
+
+/************************* Grid User Management ***************************/
+
+.grid-users-container {  
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "grid-admin grid-employee"
+    "grid-user1 grid-add"
+    "grid-user2 grid-plus";
+}
+
+.grid-admin { 
+    grid-area: grid-admin;
+    background-color: rgb(174,144,99, 50%);
+    margin: 0;
+    align-content: center;
+}
+
+.grid-employee { 
+    grid-area: grid-employee;
+    background-color: rgba(252, 249, 245, 0.619);
+    margin: 0;
+    align-content: center;
+    color: rgb(204, 204, 204);
+}
+
+.grid-user1 { 
+    grid-area: grid-user1;
+    text-decoration: none;
+}
+
+.grid-user2 { 
+    grid-area: grid-user2;
+    text-decoration: none; 
+}
+
+.grid-add { 
+    grid-area: grid-add; 
+}
+
+.grid-plus {
+    grid-area: grid-plus; 
+}
+
+.grid-user1 p:nth-child(2), .grid-user2 p:nth-child(2) {
+    font-size: small;
+    margin: 0;
+}
+
+.grid-user1 p:nth-child(1), .grid-user2 p:nth-child(1) {
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+/***************************************************************************/
+
+/********************************* Grid  Treatment requests ************************************/
+
+.grid-treatment-items {
+    display: grid;
+    justify-items: center;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-auto-flow: row;
+    grid-template-areas: 
+    "item-pending separation1 item-validated separation2 item-refused"
+    "circle-pending separation1 circle-validated separation2 circle-refused";
+}
+
+.item-pending {
+    grid-area: item-pending;
+}
+
+.circle-pending {
+    grid-area: circle-pending;
+}
+
+.separation1 {
+    grid-area: separation1;
+    width: 2px;
+    height: 15rem;
+    background-color:rgb(174,144,99, 20%) ;
+}
+
+.item-validated {
+    grid-area: item-validated;
+}
+
+.circle-validated {
+    grid-area: circle-validated;
+    
+}
+
+.separation2 {
+    grid-area: separation2;
+    width: 2px;
+    height: 15rem;
+    background-color: rgb(174,144,99, 20%);
+}
+
+.item-refused {
+    grid-area: item-refused;
+}
+
+.circle-refused {
+    grid-area: circle-refused;
+}
+
+.circle-pending {
+    background-color: #F8B550;
+    width: 6rem;
+    height: 6rem; 
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.circle-validated {
+    background-color: #57893F ;
+    width: 6rem;
+    height: 6rem; 
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+
+}
+
+.circle-refused {
+    background-color: rgb(255,0,0,50%) ;
+    width: 6rem;
+    height: 6rem; 
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
