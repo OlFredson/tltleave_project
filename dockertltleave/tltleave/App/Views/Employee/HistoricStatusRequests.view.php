@@ -6,7 +6,7 @@
     <script src="<?= URL ?>public\assets\js\color.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  <!-- Lien bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  <!-- Lien bootstrap -->
-    <link rel="stylesheet" href="\assets\css\Employee\employeeDashboard.css">
+    <link rel="stylesheet" href="\assets\css\Employee\historicStatusRequests.css">
     <link rel="stylesheet" href="\assets\css\Employee\templateEmployee.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <!-- Script bootstrap  pour librairie, icons-->
     <title><?= $title ?></title>
@@ -19,7 +19,7 @@
             <figure class="logo">
                 <a href=""><img src="\assets\images\logo1.png" alt="Logo de l'application"></a>
             </figure>
-            <h1>Dashboard</h1>
+            <h1>Historique et Statut des demandes</h1>
             <section class="icon-dropdown">
                 <a href=""><i class="bi bi-bell-fill"></i></a>
                 
@@ -49,14 +49,52 @@
             </ul>
         </section>
         <section id="dash-container">
-            <h2>Dashboard</h2>
+            <h2>Historique et Statut des demandes</h2>
             <hr>
-            <!-------------------------------------------------------- Form ------------------------------------------------->
-            <article class="rights-container">
-                <h4>Mes droits en cours</h4>
-            </article>
-            <article class="historic-container">
-                <h4>Historique des demandes</h4>
+
+            <!------------------------------------------------------------------------------ Part table Treatment Requests - Start ------------------------------------------------------------------->
+            <article class="treatment-container">
+                <div class="tabs-container">
+                    <button class="tab-btn active" type="button"><a href="#">Toutes les demandes</a></button>
+                    <button class="tab-btn"><a href="#">Demandes en attente de validation</a></button>
+                    <button class="tab-btn"><a href="#">Demandes Validées</a></button>
+                    <button class="tab-btn"><a href="#">Demandes Refusées</a></button>
+                    <button class="tab-btn"><a href="#">Demandes enregistrées</a></button>
+                    <hr class="hr-treatment">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            <th scope="col">Numéro</th>
+                            <th scope="col">Date de la demande</th>
+                            <th scope="col">Etat</th>
+                            <th scope="col">Responsable</th>
+                            <th scope="col">Date de début de congés</th>
+                            <th scope="col">Date de fin de congés</th>
+                            <th scope="col">Nbr jours</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>2024-04-23</td>
+                            <td>En attente</td>
+                            <td><img src="\assets\images\cards\zinedine-zidane-1.jpg" alt="" width="50vw"></td>
+                            <td>2024-05-03</td>
+                            <td>2024-05-11</td>
+                            <td>7</td>
+                            <td>Congés payés</td>
+                            <td>
+                                <a href=""><i class="bi bi-check2"></i></a>
+                                <a href=""><i class="bi bi-x-lg"></i></a>
+                                <a href=""><i class="bi bi-pencil-fill"></i></a>
+
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </article>
         </section>
     </main>        

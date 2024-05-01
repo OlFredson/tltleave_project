@@ -1,0 +1,38 @@
+/*************************** Request Status ***********************************/
+
+.tabs-container {
+    background-color: rgb(174,144,99, 20%);
+    margin-top: 1rem;
+    margin-left: 4rem;
+    width: 90%;
+    height: 20%;
+    border-radius: 1rem;
+}
+
+.tab-btn {
+    height: 5vh;
+    border: 2px solid rgb(174,144,99, 0%);
+    background-color: rgb(174,144,99, 0%);
+    text-align: left;
+    margin-left: 1rem;
+    padding-bottom: 0;
+    font-size: 1vw;
+}
+
+.tab-btn a {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 0;
+}
+
+.hr-treatment {
+    margin-left: 1rem;
+    width: 80%;
+    margin-top: 0;
+}
+
+/************************************************ Table requests ***********************************************/
+
+.table {
+    background-color: rgb(174,144,99, 10%);
+}

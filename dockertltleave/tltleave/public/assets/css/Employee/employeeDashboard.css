@@ -1,0 +1,6 @@
+/***************************************************** Style Employee Dashboard *****************************************/
+.rights-container, .historic-container {
+background-color: rgb(174,144,99, 20%);
+border-radius: 3rem;
+box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}

@@ -6,7 +6,7 @@
     <script src="<?= URL ?>public\assets\js\color.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  <!-- Lien bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  <!-- Lien bootstrap -->
-    <link rel="stylesheet" href="\assets\css\Employee\employeeDashboard.css">
+    <link rel="stylesheet" href="\assets\css\dashboard.css">
     <link rel="stylesheet" href="\assets\css\Employee\templateEmployee.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <!-- Script bootstrap  pour librairie, icons-->
     <title><?= $title ?></title>
@@ -51,13 +51,18 @@
         <section id="dash-container">
             <h2>Dashboard</h2>
             <hr>
-            <!-------------------------------------------------------- Form ------------------------------------------------->
-            <article class="rights-container">
-                <h4>Mes droits en cours</h4>
-            </article>
-            <article class="historic-container">
-                <h4>Historique des demandes</h4>
-            </article>
+
+            <!------------------------------------ Zone a remplir---------------------------->
+
+
+
+
+
+
+
+
+
+            <!------------------------------------ Zone a remplir---------------------------->
         </section>
     </main>        
 </body>
