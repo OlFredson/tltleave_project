@@ -5,3 +5,25 @@
     border-radius: 3rem;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
     }
+
+
+/********************************** Style butttons requests **************************************/
+
+.btn-cancel {
+    background-color: rgb(255,0,0) ;
+    border: none;
+}
+
+.btn-cancel:focus{
+    background-color:rgb(255,0,0) ;
+}
+
+.btn-register {
+    background-color: rgb(87,137,63) ;
+    border: none;
+}
+
+.btn-submit {
+    background-color: rgb(47, 113, 189);
+    border: none;
+}

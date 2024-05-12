@@ -12,8 +12,8 @@ form {
     align-items: center;
     justify-content: space-evenly;
     background-color: rgb(174, 144, 99, 25%);
-    height: 35rem;
-    width: 60rem;
+    height: 30vw;
+    width: 45vw ;
     border-radius: 5rem;
 }
 

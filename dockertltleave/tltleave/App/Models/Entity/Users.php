@@ -7,20 +7,20 @@ use DateTime;
 class User {
     //Attributs correpondant aux champs de la BDD tltleave
     private int $employeeId;
-    private string $name;
+    private string $userName;
     private string $firstname;
     private ?DateTime $birthDate;
     private ?string $situation;
     private ?string $childs;
     private ?string $gender;
-    private ?string $address;
+    private ?string $userAddress;
     private ?string $zipCode;
     private ?string $city;
     private ?string $country;
     private ?string $phone;
     private string $mail;
     private string $userProfile;
-    private ?string $role;
+    private ?string $userRole;
     private ?string $employmentStatus; #Statut de l'emploi
     private ?DateTime $hiredDate;
     private string $userPassword;
@@ -30,20 +30,20 @@ class User {
     //Constructor
     public function __construct(
         $employeeId,
-        $name,
+        $userName,
         $firstname,
         $birthDate,
         $situation,
         $childs,
         $gender,
-        $address,
+        $userAddress,
         $zipCode,
         $city,
         $country,
         $phone,
         $mail,
         $userProfile,
-        $role,
+        $userRole,
         $employmentStatus,
         $hiredDate,
         $userPassword,
@@ -51,20 +51,20 @@ class User {
         $teamId
     ) {
         $this->setEmployeeId($employeeId);
-        $this->setName($name);
+        $this->setUserName($userName);
         $this->setFirstname($firstname);
         $this->setBirthDate($birthDate);
         $this->setSituation($situation);
         $this->setChilds($childs);
         $this->setGender($gender);
-        $this->setAddress($address);
+        $this->setUserAddress($userAddress);
         $this->setZipCode($zipCode);
         $this->setCity($city);
         $this->setCountry($country);
         $this->setPhone($phone);
         $this->setMail($mail);
         $this->setUserProfile($userProfile);
-        $this->setRole($role);
+        $this->setUserRole($userRole);
         $this->setEmploymentStatus($employmentStatus);
         $this->setHiredDate($hiredDate);
         $this->setUserPassword($userPassword);
@@ -89,15 +89,15 @@ class User {
     /**
      * @return string
      */
-    public function getName(): string {
-        return $this->name;
+    public function getUserName(): string {
+        return $this->userName;
     }
 
     /**
-     * @param string $name
+     * @param string $userName
      */
-    public function setName(string $name): void {
-        $this->name = $name;
+    public function setUserName(string $userName): void {
+        $this->userName = $userName;
     }
 
     /**
@@ -173,15 +173,15 @@ class User {
     /**
      * @return string
      */
-    public function getAddress(): ?string {
-        return $this->address;
+    public function getUserAddress(): ?string {
+        return $this->userAddress;
     }
 
     /**
-     * @param string $address
+     * @param string $userAddress
      */
-    public function setAddress(?string $address): void {
-        $this->address = $address;
+    public function setUserAddress(?string $userAddress): void {
+        $this->userAddress = $userAddress;
     }
 
     /**
@@ -272,15 +272,15 @@ class User {
     /**
      * @return string
      */
-    public function getRole(): ?string {
-        return $this->role;
+    public function getUserRole(): ?string {
+        return $this->userRole;
     }
 
     /**
-     * @param string $role
+     * @param string $userRole
      */
-    public function setRole(?string $role): void {
-        $this->role = $role;
+    public function setUserRole(?string $userRole): void {
+        $this->userRole = $userRole;
     }
 
     /**

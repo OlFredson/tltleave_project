@@ -1,62 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="<?= URL ?>public\assets\js\color.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  <!-- Lien bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">  <!-- Lien bootstrap -->
-    <link rel="stylesheet" href="\assets\css\dashboard.css">
-    <link rel="stylesheet" href="\assets\css\Employee\templateEmployee.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> <!-- Script bootstrap  pour librairie, icons-->
-    <title><?= $title ?></title>
-</head>
 
-<body>
-
-    <header>
-        <nav id="navbar">
-            <figure class="logo">
-                <a href=""><img src="\assets\images\logo1.png" alt="Logo de l'application"></a>
-            </figure>
-            <h1>Dashboard</h1>
-            <section class="icon-dropdown">
-                <a href=""><i class="bi bi-bell-fill"></i></a>
-                
-                <article class="dropdown"> <!--Bouton bootstrap dropdown menu déroulant -->
-                    <div>
-                        <button type="button" class="btn btn-secondary">OF</button>
-                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" target="_blank"><i class="bi bi-file-text"></i> Mes informations</a></li>
-                            <li><a class="dropdown-item" href="#" target="_blank"><i class="bi bi-gear"></i> Parametres</a></li>
-                            <hr>
-                            <li><button type="button" class="btn btn-light dropdown-btn">Se deconnecter</button></li>
-                        </ul>
-                    </div>
-                </article>
-            </section>
-        </nav>
-    </header>
-
-    <main class="template_container">
-        <section id="sidebar">
-            <ul>
-                <li><a href="\Views\AdminDashboard.view.php" target="_blank"><img src="\assets\images\icons\admin\dashboard.svg" alt="logo dashboard" class="circle"></a></li>
-                <li><a href="\Views\Admin\UserManagement.view.php" target="_blank"><img src="\assets\images\icons\Employee\demande_conges.svg" alt="logo gestion des utilisateurs" class="circle"></a></li>
-                <li><a href="\Views\Admin\TreatmentRequests.view.php" target="_blank"><img src="\assets\images\icons\Employee\Traitement des demandes.svg" alt="logo traitement des demandes" class="circle"></a></li>
-            </ul>
-        </section>
-        <section id="dash-container">
+            <!-------------------------------------------------------- Form ------------------------------------------------->
             <h2>Ajout utilisateurs</h2>
             <hr>
-            <!-------------------------------------------------------- Form ------------------------------------------------->
             <section class="form-container">
                 <form action="" method="post" >
                     <article class="mb-3">
-                        <label for="name" class="form-label"></label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Nom">
+                        <label for="userName" class="form-label"></label>
+                        <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom">
                     </article>
                     <article class="mb-3">
                         <label for="firstname" class="form-label"></label>
@@ -417,8 +367,8 @@
                         <input type="text" name="number" class="form-control" id="number" placeholder="Téléphone">
                     </article>
                     <article class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"></label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="@mail">
+                        <label for="mail" class="form-label"></label>
+                        <input type="email" name="mail" class="form-control" id="mail" placeholder="@mail">
                     </article>
                     <article class="mb-3">
                         <p>Profil</p>
@@ -428,12 +378,12 @@
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Statut">
+                        <label for="userProfile" class="form-label">Email address</label>
+                        <input type="text" name="userProfile" class="form-control" id="userProfile" placeholder="Statut Employé">
                     </article>
                     <article class="mb-3">
                         <p>Statut Emploi</p>
-                        <select name="" id="">
+                        <select name="employmentStatus" id="employmentStatus">
                             <option value="1">Contrat à durée indéterminée (CDI)</option>
                             <option value="2">Contrat à durée détérminée (CDD)</option>
                             <option value="3">CDD à ojet défini</option>
@@ -442,17 +392,14 @@
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"></label>
-                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Date d'embauche (ex 2022-05-30) : ">
+                        <label for="hiredDate" class="form-label"></label>
+                        <input type="date" name="hiredDate" class="form-control" id="hiredDate">
                     </article>
                     <article class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label"></label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Mot de passe">
+                        <label for="userPassword" class="form-label"></label>
+                        <input type="text" name="userPassword" class="form-control" id="userPassword" placeholder="Mot de passe">
                     </article>
                     <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
                 </form>
             </section>
         </section>
-    </main>        
-</body>
-</html>

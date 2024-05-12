@@ -1,30 +1,26 @@
 <?php
 
-/*namespace src\app\Controllers\Connexion;*/
+/*namespace App\Controllers\Employee;*/
 
-class EmpoyeeController {
+class EmployeeController {
+    private $methodRender;
 
-    public function dashboard() {
-        $this->render("template");
+    public function __construct(){
+        $this->methodRender= new MethodRender();
+
+    }
+    public function dashboardEmployee() :void {
+    $title="Dashboard";
+    $this->methodRender->render("Employee/EmployeeDashboard.view",['title'=>$title]);
     }
 
-
-    public function render($viewName) {
-        include '..App/Views/'.$viewName.'.php';
-    }
-    /**public function login(): void{
-        $title = "Authentification";
-        $this->render("Visitor/login.view", [
-            "title"=>$title
-    ]);
+    public function statusRequests() :void {
+        $title='Statut des demandes';
+        $this->methodRender->render("Employee/HistoricStatusRequests.view", ['title'=>$title]);
     }
 
-    public function render(string $viewName,array $data=[]): void
-    {
-        ob_start();
-        extract($data);
-        include VIEWS_PATH.$viewName.".php";
-        $content=ob_get_clean();
-        include VIEWS_PATH."template.php";
-    }*/
+    public function leaveRequests() :void {
+        $title='Demande de congés';
+        $this->methodRender->render("Employee/LeaveRequests.view", ['title'=>$title]);
+    }
 }

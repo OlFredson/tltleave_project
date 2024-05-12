@@ -1,13 +1,28 @@
 <?php
 
-class LoginController {
+/*namespace App\Controllers\Connexion;*/
 
-    public function authentication() {
-        $this->render("HistoricStatusRequests");
+require_once "../App/Controllers/MethodRender.php";
+
+class LoginController {
+    private $methodRender;
+
+    public function __construct(){
+        $this->methodRender= new MethodRender();
     }
 
+    public function authentication(): void{
+        $title="Connexion";
+        $this->methodRender->render("Connexion/Login.view",['title'=>$title]);
+    }
 
-    public function render($viewName) {
-        include '../App/Views/Employee/'.$viewName.'.view.php';
+    public function passwordForgot(): void{
+        $title="Mot de passe oublié";
+        $this->methodRender->render("Connexion/PasswordForgot.view",['title'=>$title]);
+    }
+
+    public function resetPassword(): void{
+        $title="Réinitialisation du mot de passe";
+        $this->methodRender->render("Connexion/ResetPassword.view",['title'=>$title]);
     }
 }

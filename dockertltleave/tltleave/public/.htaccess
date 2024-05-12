@@ -8,5 +8,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #Vérifie si le chemin demandé n'est pas un dossier existant
 
 RewriteRule ^(.*)$ index.php?page=$1  [QSA,L]
-#Redirige toutes les requetes vers index.php et passe la partie de l'URL demandée en tat que parametre de requete GET
+#Redirige toutes les requetes vers index.php et passe la partie de l'URL demandée en tant que parametre de requete GET
 #Ex : www.tltleave.fr/public/index.php?page=dashboard avec la regle de réécriture nous aurons www.tltleave.fr/dashboard
