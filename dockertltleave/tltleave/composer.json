@@ -1,0 +1,17 @@
+{
+    "name": "von/tltleave",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fredson Oliveira",
+            "email": "o.fredson@yahoo.fr"
+        }
+    ],
+    "require": {
+        "symfony/routing": "^7.0"
+    }
+}

@@ -4,8 +4,9 @@
             <section class="form-container">
                 <form action="" method="post" >
                     <article class="mb-3">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Selectionner type de congés</option>
+                        <label for="leaveTypeName">Type de congés</label>
+                        <select class="form-select" aria-label="Default select example" name="leaveTypeName">
+                            <option selected>Selectionner</option>
                             <option value="1">Congés payés</option>
                             <option value="2">Congé maladie</option>
                             <option value="3">RTT</option>
@@ -23,23 +24,25 @@
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="beginDate" class="form-label"></label>
+                        <label for="beginDate" class="form-label">Date de début</label>
                         <input type="date" name="beginDate" class="form-control" id="beginDate">
                     </article>
                     <article class="mb-3">
+                        <label for="">Heure de début</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option value="1">Selectionner heure de début</option>
+                            <option value="1">Selectionner</option>
                             <option value="2">Matin</option>
                             <option value="3">Après-midi</option>
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="endDate" class="form-label"></label>
+                        <label for="endDate" class="form-label">Date de fin</label>
                         <input type="date" name="endDate" class="form-control" id="endDate">
                     </article>
                     <article class="mb-3">
+                        <label for="">Heure de fin</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option value="1">Selectionner heure de fin</option>
+                            <option value="1">Selectionner</option>
                             <option value="2">Matin</option>
                             <option value="3">Après-midi</option>
                         </select>

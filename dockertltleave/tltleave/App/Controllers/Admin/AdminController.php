@@ -1,46 +1,54 @@
 <?php
 
-/*namespace App\Controllers\Admin;*/
+namespace App\Controllers\Admin;
 
-require_once "../App/Controllers/MethodRender.php";
+use App\Controllers\AbstractController;
+use App\Controllers\SecurityController;
 
-class AdminController {
-    
-    private $methodRender;
+class AdminController extends AbstractController {
+
+    private SecurityController $security;
+
     public function __construct(){
-        $this->methodRender = new MethodRender();
+        $this->security=new SecurityController();
     }
 
     public function dashboard():void {
         $title="Dashboard";
-        $this->methodRender->render("Admin/AdminDashboard.view", [
+        $this->render("Admin/AdminDashboard.view", [
             'title'=>$title]);
     }
 
     public function userManagement() :void {
         $title= "Gestion des utilisateurs";
-        $this-> methodRender->render("Admin/UserManagement.view", ['title' =>$title]);
+        $this->render("Admin/UserManagement.view", [
+            'title' =>$title]);
     }
 
     public function treatmentRequests() :void {
         $title= "Traitement des demandes";
-        $this-> methodRender->render("Admin/TreatmentRequests.view", ['title' =>$title]);
+        $this->render("Admin/TreatmentRequests.view", [
+            'title' =>$title]);
     }
 
     public function statistics() :void {
         $title= "Statistiques";
-        $this-> methodRender->render("Admin/Statistics.view", ['title' =>$title]);
+        $this->render("Admin/Statistics.view", [
+            'title' =>$title]);
     }
 
     public function calendar() :void {
         $title= "Calendrier";
-        $this-> methodRender->render("Admin/Calendar.view", ['title' =>$title]);
+        $this->render("Admin/Calendar.view", [
+            'title' =>$title]);
     }
 
     public function addUsers() :void {
         $title= "Ajout utilisateurs";
-        $this-> methodRender->render("Admin/AddUsers.view", ['title' =>$title]);
+        $token=$this->security->generateCsrfToken();
+        $this->render("Admin/AddUsers.view", [
+            'title' =>$title,
+            'token'=>$token
+        ]);
     }
-
-
 }

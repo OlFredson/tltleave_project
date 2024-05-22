@@ -1,26 +1,24 @@
 <?php
 
-/*namespace App\Controllers\Employee;*/
+namespace App\Controllers\Employee;
 
-class EmployeeController {
-    private $methodRender;
+use App\Controllers\AbstractController;
 
-    public function __construct(){
-        $this->methodRender= new MethodRender();
 
-    }
+class EmployeeController extends AbstractController {
+    
     public function dashboardEmployee() :void {
     $title="Dashboard";
-    $this->methodRender->render("Employee/EmployeeDashboard.view",['title'=>$title]);
+    $this->render("Employee/EmployeeDashboard.view",['title'=>$title]);
     }
 
     public function statusRequests() :void {
         $title='Statut des demandes';
-        $this->methodRender->render("Employee/HistoricStatusRequests.view", ['title'=>$title]);
+        $this->render("Employee/HistoricStatusRequests.view", ['title'=>$title]);
     }
 
     public function leaveRequests() :void {
         $title='Demande de congés';
-        $this->methodRender->render("Employee/LeaveRequests.view", ['title'=>$title]);
+        $this->render("Employee/LeaveRequests.view", ['title'=>$title]);
     }
 }

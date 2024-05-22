@@ -1,4 +1,4 @@
-        <form action="" method="POST">
+        <form action="Connexion/PasswordForgot.view" method="POST">
             <article class="group-container">
                 <figure>
                     <img src="/assets/images/logo1.png" alt="Logo de l'application" width="150rem">
@@ -14,7 +14,7 @@
                     <button type="button" class="button">Recevoir le lien</button>
                 </div>
                 <div>
-                    <a href="tltleave\App\Views\Connexion\PasswordForgot.view.php">Retour à l'écran de connexion</a>
+                    <a href="login">Retour à l'écran de connexion</a>
                 </div>
                 
             </article>

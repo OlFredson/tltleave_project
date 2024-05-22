@@ -1,28 +1,34 @@
 <?php
 
-/*namespace App\Controllers\Connexion;*/
+namespace App\Controllers\Connexion;
+use App\Controllers\AbstractController;
+use App\Controllers\SecurityController;
 
-require_once "../App/Controllers/MethodRender.php";
+class LoginController extends AbstractController {
+    private SecurityController $security;
 
-class LoginController {
-    private $methodRender;
-
-    public function __construct(){
-        $this->methodRender= new MethodRender();
+    public function __construct() {
+        $this->security = new SecurityController();
     }
 
     public function authentication(): void{
         $title="Connexion";
-        $this->methodRender->render("Connexion/Login.view",['title'=>$title]);
+        $this->render("Connexion/Login.view",['title'=>$title]);
     }
 
     public function passwordForgot(): void{
         $title="Mot de passe oublié";
-        $this->methodRender->render("Connexion/PasswordForgot.view",['title'=>$title]);
+        $this->render("Connexion/PasswordForgot.view",['title'=>$title]);
     }
 
     public function resetPassword(): void{
         $title="Réinitialisation du mot de passe";
-        $this->methodRender->render("Connexion/ResetPassword.view",['title'=>$title]);
+        $this->render("Connexion/ResetPassword.view",['title'=>$title]);
     }
+
+    public function connexionValidation() : void {
+        $employeeId= $this->security->cleanInput($_POST['employeeId']);
+        
+    }
+    
 }

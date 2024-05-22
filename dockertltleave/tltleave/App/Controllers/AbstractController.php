@@ -1,9 +1,10 @@
 <?php
 
-/*namespace App\Controllers;*/
+namespace App\Controllers;
 
-class MethodRender{
+class AbstractController{
     public function render(string $viewName, array $data=[]){
+
         ob_start();
         extract($data);
         $title=$data['title'];
@@ -16,5 +17,10 @@ class MethodRender{
         } else {
             include VIEWS_PATH."templateEmployee.view.php";
         }
+    }
+
+    public function redirecToRoute(string $route): void {
+        header("Location:".URL.$route);
+        exit();
     }
 }

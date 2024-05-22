@@ -3,27 +3,39 @@
             <h2>Ajout utilisateurs</h2>
             <hr>
             <section class="form-container">
-                <form action="" method="post" >
+                <form action="/submitusers" method="POST" >
                     <article class="mb-3">
-                        <label for="userName" class="form-label"></label>
+                        <label for="userName" class="form-label">Nom:</label>
                         <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom">
                     </article>
                     <article class="mb-3">
-                        <label for="firstname" class="form-label"></label>
-                        <input type="text" name="firstname" class="form-control" id="firstname" placeholder="Prenom">
+                        <label for="firstName" class="form-label">Prénom:</label>
+                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Prenom">
                     </article>
                     <article class="mb-3">
-                        <label for="birthDate" class="form-label"></label>
-                        <input type="date" name="birthDate" class="form-control" id="birthDate" placeholder="Date de naissance (ex: 1990-01-30)">
+                        <label for="birthDate" class="form-label">Date de naissance:</label>
+                        <input type="date" name="birthDate" class="form-control" id="birthDate">
                     </article>
                     <article class="mb-3">
-                        <label for="situation" class="form-label"></label>
-                        <input type="text" name="situation" class="form-control" id="situation" placeholder="Situation">
+                        <label for="situation">Situation</label>
+                        <select name="situation" id="situation">
+                            <option value="1">Selectionner</option>
+                            <option value="2">Célibataire</option>
+                            <option value="3">Marié(e)</option>
+                            <option value="4">Pacsé(e)</option>
+                            <option value="5">En concubinage</option>
+                            <option value="6">Divorcé(e)</option>
+                            <option value="7">Veuf(ve)</option>
+                            <option value="8">Séparé(e)</option>
+                            <option value="9">En couple</option>
+                            <option value="10">En union libre</option>
+                            <option value="11">Fiancé(e)</option>
+                        </select>
                     </article>
                     <article class="mb-3">
-                        <h5>Enfant :</h5>
+                        <label for="childs">Enfant:</label>
                         <select class="form-select" aria-label="Default select example" name="childs" id="childs">
-                            <option selected>Nbr</option>
+                            <option selected>Nombre<option>
                             <option value="1">0</option>
                             <option value="2">1</option>
                             <option value="3">2</option>
@@ -35,15 +47,15 @@
                         </select>
                     </article>
                     <article class="mb-3">
-                        <h5>Sexe:</h5>
+                        <label for="gender">Sexe:</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender-female" id="gender-female">
+                            <input class="form-check-input" type="radio" name="gender" id="gender-female">
                             <label class="form-check-label" for="gender-female">
                                 Féminin
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender-male" id="gender-male" checked>
+                            <input class="form-check-input" type="radio" name="gender" id="gender-male" checked>
                             <label class="form-check-label" for="gender-male">
                                 Masculin
                             </label>
@@ -52,21 +64,18 @@
                     <article class="mb-3">
                         <fieldset>
                             <legend>Adresse:</legend>
-                            <label for="address-number" class="form-label"></label>
-                            <input type="text" name="address-number" class="form-control" id="address-number" placeholder="Numéro">
+                            <label for="userAddress" class="form-label">Numéro et rue:</label>
+                            <input type="text" name="userAddress" class="form-control" id="userAddress" placeholder="ex: 1 rue de Paris">
 
-                            <label for="street" class="form-label"></label>
-                            <input type="text" name="street" class="form-control" id="street" placeholder="Rue">
+                            <label for="zipCode" class="form-label">Code Postal:</label>
+                            <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="ex :75001">
 
-                            <label for="zipcode" class="form-label"></label>
-                            <input type="text" name="zipcode" class="form-control" id="zipcode" placeholder="Code Postal">
-
-                            <label for="city" class="form-label"></label>
-                            <input type="text" name="city" class="form-control" id="city" placeholder="Ville">
-
+                            <label for="city" class="form-label">Ville:</label>
+                            <input type="text" name="city" class="form-control" id="city" placeholder="ex : Paris">
+                            
                             <div class="mb-3">
-                                <p>Pays</p>
-                                <select name="pays">
+                                <label for="country">Pays:</label>
+                                <select name="country" id="country">
                                     <option value="selectionner">Selectionner</option>
                                     <optgroup label="A">
                                         <option value="afghanistan">Afghanistan</option>
@@ -363,42 +372,49 @@
                         </fieldset>
                     </article>
                     <article class="mb-3">
-                        <label for="number" class="form-label"></label>
-                        <input type="text" name="number" class="form-control" id="number" placeholder="Téléphone">
+                        <label for="phone" class="form-label">Numéro de Téléphone</label>
+                        <input type="text" name="phone" class="form-control" id="phone" placeholder="Téléphone">
                     </article>
                     <article class="mb-3">
-                        <label for="mail" class="form-label"></label>
-                        <input type="email" name="mail" class="form-control" id="mail" placeholder="@mail">
+                        <label for="userMail" class="form-label">Adresse mail</label>
+                        <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail">
                     </article>
                     <article class="mb-3">
-                        <p>Profil</p>
-                        <select name="" id="">
-                            <option value="1">Administrateur</option>
-                            <option value="2">Employée</option>
+                        <label for="userProfile">Profil:</label>
+                        <select name="userProfile" id="userProfile">
+                            <option value="1">Selectionner</option>
+                            <option value="2">Administrateur</option>
+                            <option value="3">Employée</option>
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="userProfile" class="form-label">Email address</label>
-                        <input type="text" name="userProfile" class="form-control" id="userProfile" placeholder="Statut Employé">
+                        <label for="userRole">Poste:</label>
+                        <input type="text" name="userRole" id="userRole" placeholder="ex : Adminstrateur Réseau">
                     </article>
                     <article class="mb-3">
-                        <p>Statut Emploi</p>
+                        <label for="employmentStatus">Statut Emploi:</label>
                         <select name="employmentStatus" id="employmentStatus">
-                            <option value="1">Contrat à durée indéterminée (CDI)</option>
-                            <option value="2">Contrat à durée détérminée (CDD)</option>
-                            <option value="3">CDD à ojet défini</option>
-                            <option value="4">Contrat de travail temporaire ou d'intérim</option>
-                            <option value="4">Contrat de travail à temps partiel</option>
+                            <option value="1">Selectionner</option>
+                            <option value="2">Contrat à durée indéterminée (CDI)</option>
+                            <option value="3">Contrat à durée détérminée (CDD)</option>
+                            <option value="4">CDD à ojet défini</option>
+                            <option value="5">Contrat de travail temporaire ou d'intérim</option>
+                            <option value="6">Contrat de travail à temps partiel</option>
                         </select>
                     </article>
                     <article class="mb-3">
-                        <label for="hiredDate" class="form-label"></label>
+                        <label for="hiredDate" class="form-label">Date d'embauche:</label>
                         <input type="date" name="hiredDate" class="form-control" id="hiredDate">
                     </article>
                     <article class="mb-3">
                         <label for="userPassword" class="form-label"></label>
                         <input type="text" name="userPassword" class="form-control" id="userPassword" placeholder="Mot de passe">
                     </article>
+                    <article class="mb-3">
+                        <label for="confirimPassword" class="form-label"></label>
+                        <input type="text" name="confirimPassword" class="form-control" id="confirimPassword" placeholder="Confirmer Mot de passe">
+                    </article>
+                    <input type="hidden" name="csrf_token" value="<?= $token ?>">
                     <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
                 </form>
             </section>

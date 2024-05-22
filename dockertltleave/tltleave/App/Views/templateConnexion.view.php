@@ -14,9 +14,6 @@
     <section>
     <?=$content ?>
     </section>
-    <footer>
-        <p>&copy; 2024 Réinitialisation du Mot de Passe. Tous droits réservés.</p>
-    </footer>
-</body>
+
 
 </html>

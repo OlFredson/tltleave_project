@@ -1,9 +1,13 @@
 <?php
 
-require_once "../App/Controllers/Connexion/LoginController.php";
-# Inclus le fichier LoginController.php dans le script. Si il n'est pas trouvé, une erreur fatale sera affiché et le script s'arrete immediatement.
-require_once "../App/Controllers/Admin/AdminController.php";
-require_once "../App/Controllers/Employee/EmployeeController.php";
+use App\Controllers\Admin\AdminController;
+use App\Controllers\Connexion\LoginController;
+use App\Controllers\Employee\EmployeeController;
+use App\Controllers\User\UserController;
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+
 
 define('URL',str_replace("public/","",            # Fonction qui supprime "public/" de l'URL de base
         str_replace("index.php","",               # Fonction qui supprime "index.php" de l'URL de base
@@ -19,20 +23,22 @@ define('VIEWS_PATH',__DIR__.'/../App/Views/');
 
 /*
 var_dump(URL);
-*/
+
 var_dump(__DIR__);
 var_dump(VIEWS_PATH);
-
+*/
 
 $users= new LoginController();
 $admin= new AdminController();
 $employee= new EmployeeController();
+$userController = new UserController();
 
 try {
     if(empty($_GET["page"])){
         $users->authentication();
     } else {
         $url=explode("/", filter_var($_GET['page'],FILTER_SANITIZE_URL));  # Cette ligne prends l'url et decoupe au niveau des /, cela à pour but de travailler avec les differents elements de notre URL . Ex : localhost:/tltleave/login
+        var_dump($url);
         switch ($url[0]){
             case "login":
                 $users->authentication();
@@ -69,6 +75,9 @@ try {
             case "leaverequests":
                 $employee->leaveRequests();
                 break;
+            case 'submitusers':
+                $userController->add();
+                break;
             default:
                 throw new Exception("La page n'existe pas");
         }
@@ -77,3 +86,4 @@ try {
     $error=$exception->getMessage();
     include VIEWS_PATH."error.view.php";
 }
+

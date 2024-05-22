@@ -1,14 +1,14 @@
 <?php
 
-namespace src\app\Entity\Models;
+namespace App\Models\Entity;
 
 use DateTime;
 
-class User {
+class Users {
     //Attributs correpondant aux champs de la BDD tltleave
-    private int $employeeId;
+    private ?int $idEmployee;
     private string $userName;
-    private string $firstname;
+    private string $firstName;
     private ?DateTime $birthDate;
     private ?string $situation;
     private ?string $childs;
@@ -18,20 +18,20 @@ class User {
     private ?string $city;
     private ?string $country;
     private ?string $phone;
-    private string $mail;
+    private string $userMail;
     private string $userProfile;
     private ?string $userRole;
-    private ?string $employmentStatus; #Statut de l'emploi
+    private ?string $employmentStatus;
     private ?DateTime $hiredDate;
     private string $userPassword;
-    private int $adminId;
-    private int $teamId;
+    private ?int $adminId;
+    private ?int $teamId;
 
     //Constructor
     public function __construct(
-        $employeeId,
+        $idEmployee,
         $userName,
-        $firstname,
+        $firstName,
         $birthDate,
         $situation,
         $childs,
@@ -41,7 +41,7 @@ class User {
         $city,
         $country,
         $phone,
-        $mail,
+        $userMail,
         $userProfile,
         $userRole,
         $employmentStatus,
@@ -50,9 +50,9 @@ class User {
         $adminId,
         $teamId
     ) {
-        $this->setEmployeeId($employeeId);
+        $this->setIdEmployee($idEmployee);
         $this->setUserName($userName);
-        $this->setFirstname($firstname);
+        $this->setFirstName($firstName);
         $this->setBirthDate($birthDate);
         $this->setSituation($situation);
         $this->setChilds($childs);
@@ -62,7 +62,7 @@ class User {
         $this->setCity($city);
         $this->setCountry($country);
         $this->setPhone($phone);
-        $this->setMail($mail);
+        $this->setUserMail($userMail);
         $this->setUserProfile($userProfile);
         $this->setUserRole($userRole);
         $this->setEmploymentStatus($employmentStatus);
@@ -75,15 +75,15 @@ class User {
     /**
      * @return int
      */
-    public function getEmployeeId(): int {
-        return $this->employeeId;
+    public function getIdEmployee(): int {
+        return $this->idEmployee;
     }
 
     /**
-     * @param int $employeeId
+     * @param int $idEmployee
      */
-    public function setEmployeeId(int $employeeId): void {
-        $this->employeeId = $employeeId;
+    public function setIdEmployee(?int $idEmployee): void {
+        $this->idEmployee = $idEmployee;
     }
 
     /**
@@ -103,15 +103,15 @@ class User {
     /**
      * @return string
      */
-    public function getFirstname(): string {
-        return $this->firstname;
+    public function getFirstName(): string {
+        return $this->firstName;
     }
 
     /**
-     * @param string $firstname
+     * @param string $firstName
      */
-    public function setFirstname(string $firstname): void {
-        $this->firstname = $firstname;
+    public function setFirstName(string $firstName): void {
+        $this->firstName = $firstName;
     }
 
     /**
@@ -205,7 +205,6 @@ class User {
         return $this->city;
     }
 
-
     /**
      * @param string $city
      */
@@ -244,15 +243,15 @@ class User {
     /**
      * @return string
      */
-    public function getMail(): string {
-        return $this->mail;
+    public function getUserMail(): string {
+        return $this->userMail;
     }
 
     /**
-     * @param string $mail
+     * @param string $userMail
      */
-    public function setMail(string $mail): void {
-        $this->mail = $mail;
+    public function setUserMail(string $userMail): void {
+        $this->userMail = $userMail;
     }
 
     /**
@@ -340,7 +339,7 @@ class User {
     /**
      * @param int $adminId
      */
-    public function setAdminId(int $adminId): void {
+    public function setAdminId(?int $adminId): void {
         $this->adminId = $adminId;
     }
 
@@ -354,7 +353,7 @@ class User {
     /**
      * @param int $teamId
      */
-    public function setTeamId(int $teamId): void {
+    public function setTeamId(?int $teamId): void {
         $this->teamId = $teamId;
     }
 

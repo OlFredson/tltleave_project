@@ -36,6 +36,15 @@ services:
     networks:
       - tltleave_network
 
+  composer:
+    image: composer:2.7.4
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html/tltleave
+    command: ["composer", "install"]
+    networks:
+      - tltleave_network
+
 volumes:
   mysql:
   

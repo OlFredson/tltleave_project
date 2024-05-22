@@ -44,9 +44,9 @@
     <main class="template_container">
         <section id="sidebar">
             <ul>
-                <li><a href="<?=URL?>dashboardemployee"><img src="\assets\images\icons\admin\dashboard.svg" alt="logo dashboard" class="circle"></a></li>
-                <li><a href="<?=URL?>leaverequests"><img src="\assets\images\icons\Employee\demande_conges.svg" alt="logo gestion des utilisateurs" class="circle"></a></li>
-                <li><a href="<?=URL?>statusrequests"><img src="\assets\images\icons\Employee\Traitement des demandes.svg" alt="logo traitement des demandes" class="circle"></a></li>
+                <li><a href="dashboardemployee"><img src="\assets\images\icons\admin\dashboard.svg" alt="logo dashboard" class="circle"></a></li>
+                <li><a href="leaverequests"><img src="\assets\images\icons\Employee\demande_conges.svg" alt="logo gestion des utilisateurs" class="circle"></a></li>
+                <li><a href="statusrequests"><img src="\assets\images\icons\Employee\Traitement des demandes.svg" alt="logo traitement des demandes" class="circle"></a></li>
             </ul>
         </section>
         <section id="dash-container">
