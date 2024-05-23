@@ -6,20 +6,26 @@ use App\Controllers\SecurityController;
 use App\Models\Entity\Users;
 use App\Models\Manager\UserManager;
 
-
-class UserController {
+class UserController
+{
     private SecurityController $security;
 
-    public function __construct() {
-        $this->security=new SecurityController();
+    public function __construct()
+    {
+        $this->security = new SecurityController();
     }
     // Vérifie si le formulaire a bien été soumis
-    public function add():void {
+    public function add(): void
+    {
+        echo ('avant add');
+        echo ('<br>');
+
         //Récupere les données du formulaire
-        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo ('dans if');
             $userName = $_POST['userName'];
             $firstName = $_POST['firstName'];
-            $birthDate = $_POST['birthDate'];
+            $birthDate = new \DateTime($_POST['birthDate']);
             $situation = $_POST['situation'];
             $childs = $_POST['childs'];
             $gender = $_POST['gender'];
@@ -32,43 +38,37 @@ class UserController {
             $userProfile = $_POST['userProfile'];
             $userRole = $_POST['userRole'];
             $employmentStatus = $_POST['employmentStatus'];
-            $hiredDate = $_POST['hiredDate'];
+            $hiredDate = new \DateTime($_POST['hiredDate']);
             $userPassword = $_POST['userPassword'];
 
-            $user = new Users(
-                null, // Généré automatiquement par la BDD
-                $userName,
-                $firstName,
-                new \DateTime($birthDate),
-                $situation,
-                $childs,
-                $gender,
-                $userAddress,
-                $zipCode,
-                $city,
-                $country,
-                $phone,
-                $userMail,
-                $userProfile,
-                $userRole,
-                $employmentStatus,
-                new \DateTime($hiredDate),
-                $userPassword,
-                null,
-                null
+            $user = new Users($userName, $firstName, $userMail, $userProfile, $userPassword);
+            $user->setBirthDate($birthDate);
+            $user->setSituation($situation);
+            $user->setChilds($childs);
+            $user->setCity($city);
+            $user->setGender($gender);
+            $user->setUserAddress($userAddress);
+            $user->setZipCode($zipCode);
+            $user->setCountry($country);
+            $user->setPhone($phone);
+            $user->setUserRole($userRole);
+            $user->setEmploymentStatus($employmentStatus);
+            $user->setHiredDate($hiredDate);
 
-            );
 
             $userManager = new UserManager();
 
-            $userInserted=$userManager->insertUser($user);
+            echo ('<br>');
+            echo ('avant insertion user');
 
-            if($userInserted){
+            $userInserted = $userManager->insertUser($user);
+
+            if ($userInserted) {
                 echo "Utilisateur crée avec succès.";
             } else {
                 "Erreur lors de la création de l'utilisateur";
-
             }
         }
-    } 
+        echo ('en dehors du if');
+    }
 }

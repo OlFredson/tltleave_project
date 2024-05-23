@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "88:80"
     volumes:
       - ./tltleave:/var/www/html/tltleave
     networks:

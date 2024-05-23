@@ -4,13 +4,24 @@ namespace App\Models\Manager;
 
 
 use App\Models\Entity\Users;
+use Exception;
 use PDO;
 
-class UserManager {
+class UserManager
+{
     private PDO $db;
 
-    public function __construct(){
-        $this->db= new PDO("mysql:host=localhost;dbname=tltleavedb;charset=utf8;port=8080","tlt_user","Onepiece87.");
+    public function __construct()
+    {
+        echo ('<br>');
+        echo ('dans usermanager construct');
+
+        try {
+
+            $this->db = new PDO("mysql:host=192.168.1.104;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
+        } catch (Exception $exception) {
+            echo ($exception->getMessage());
+        }
     }
 
     /**
@@ -18,29 +29,32 @@ class UserManager {
      *@return bool
      */
 
-    public function insertUser(Users $user):bool {
-        $stmt=$this->db->prepare("INSERT INTO users (userName,firstName,birthDate,situation,childs,gender,userAddress,zipCode,city,country,phone,userMail,userProfile,userRole,employmentStatus,hiredDate,userPassword,adminId,teamId) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        $addUser=$stmt->execute([
-            $user->getUserName(),
-            $user->getFirstname(),
-            $user->getBirthDate() ? $user->getBirthDate()->format('Y-m-d'):null,
-            $user->getSituation(),
-            $user->getChilds(),
-            $user->getGender(),
-            $user->getUserAddress(),
-            $user->getZipCode(),
-            $user->getCity(),
-            $user->getCountry(),
-            $user->getPhone(),
-            $user->getUserMail(),
-            $user->getUserProfile(),
-            $user->getUserRole(),
-            $user->getEmploymentStatus(),
-            $user->getHiredDate() ? $user->getHiredDate()->format('Y-m-d'):null,
-            $user->getUserPassword(),
-            $user->getAdminId(),
-            $user->getTeamId(),
-        ]);
+    public function insertUser(Users $user): bool
+    {
+        try {
+            $stmt = $this->db->prepare("INSERT INTO users (user_name,firstname,birth_date,situation,childs,gender,user_address,zip_code,city,country,phone,user_mail,user_profile,user_role,employment_status,hired_date,user_password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $addUser = $stmt->execute([
+                $user->getUserName(),
+                $user->getFirstname(),
+                $user->getBirthDate() ? $user->getBirthDate()->format('Y-m-d') : null,
+                $user->getSituation(),
+                $user->getChilds(),
+                $user->getGender(),
+                $user->getUserAddress(),
+                $user->getZipCode(),
+                $user->getCity(),
+                $user->getCountry(),
+                $user->getPhone(),
+                $user->getUserMail(),
+                $user->getUserProfile(),
+                $user->getUserRole(),
+                $user->getEmploymentStatus(),
+                $user->getHiredDate() ? $user->getHiredDate()->format('Y-m-d') : null,
+                $user->getUserPassword()
+            ]);
+        } catch (Exception $exception) {
+            echo ($exception->getMessage());
+        }
         return $addUser;
     }
 
@@ -51,17 +65,18 @@ class UserManager {
      */
     public function verifyPassword(string $idEmployee, string $userPassword): bool
     {
-        $user=$this->getUserByIdEmployee($idEmployee);
-        if($user && password_verify($userPassword, $user['userPassword'])){
+        $user = $this->getUserByIdEmployee($idEmployee);
+        if ($user && password_verify($userPassword, $user['userPassword'])) {
             return true;
         }
         return false;
     }
 
-    public function getUserByIdEmployee(string $idEmployee):mixed {
-        $stmt=$this->db->prepare("SELECT * FROM users WHERE idEmployee=:idEmployee");
-        $stmt->execute(["idEmployee"=>$idEmployee]);
-        $user=$stmt->fetch();
+    public function getUserByIdEmployee(string $idEmployee): mixed
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE idEmployee=:idEmployee");
+        $stmt->execute(["idEmployee" => $idEmployee]);
+        $user = $stmt->fetch();
         return $user;
     }
 }

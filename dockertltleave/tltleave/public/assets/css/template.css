@@ -134,7 +134,7 @@ main {
     display: flex;
     justify-content: space-around;
     width: 10vh;
-    margin-left: 3rem;
+    margin-left: 50rem;
 
 }
 
@@ -167,7 +167,6 @@ hr {
 }
 
 #dash-container {
- 
     background-color: #ffffff;
     padding: 20px;
     border-radius:3rem;
