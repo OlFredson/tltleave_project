@@ -6,7 +6,7 @@ use App\Controllers\SecurityController;
 use App\Models\Entity\Users;
 use App\Models\Manager\UserManager;
 
-class UserController
+class UserController // Responsable de la gestion des utilisateurs (création, mise à jour, suppression)
 {
     private SecurityController $security;
 
@@ -17,29 +17,27 @@ class UserController
     // Vérifie si le formulaire a bien été soumis
     public function add(): void
     {
-        echo ('avant add');
-        echo ('<br>');
 
         //Récupere les données du formulaire
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo ('dans if');
-            $userName = $_POST['userName'];
-            $firstName = $_POST['firstName'];
+
+            $userName = $this->security->cleanInput($_POST['userName']);
+            $firstName = $this->security->cleanInput($_POST['firstName']);
             $birthDate = new \DateTime($_POST['birthDate']);
-            $situation = $_POST['situation'];
-            $childs = $_POST['childs'];
-            $gender = $_POST['gender'];
-            $userAddress = $_POST['userAddress'];
-            $zipCode = $_POST['zipCode'];
-            $city = $_POST['city'];
-            $country = $_POST['country'];
-            $phone = $_POST['phone'];
-            $userMail = $_POST['userMail'];
-            $userProfile = $_POST['userProfile'];
-            $userRole = $_POST['userRole'];
-            $employmentStatus = $_POST['employmentStatus'];
+            $situation = $this->security->cleanInput($_POST['situation']);
+            $childs = $this->security->cleanInput($_POST['childs']);
+            $gender = $this->security->cleanInput($_POST['gender']);
+            $userAddress = $this->security->cleanInput($_POST['userAddress']);
+            $zipCode = $this->security->cleanInput($_POST['zipCode']);
+            $city = $this->security->cleanInput($_POST['city']);
+            $country = $this->security->cleanInput($_POST['country']);
+            $phone = $this->security->cleanInput($_POST['phone']);
+            $userMail = $this->security->cleanInput($_POST['userMail']);
+            $userProfile = $this->security->cleanInput($_POST['userProfile']);
+            $userRole = $this->security->cleanInput($_POST['userRole']);
+            $employmentStatus = $this->security->cleanInput($_POST['employmentStatus']);
             $hiredDate = new \DateTime($_POST['hiredDate']);
-            $userPassword = $_POST['userPassword'];
+            $userPassword = $this->security->cleanInput($_POST['userPassword']);
 
             $user = new Users($userName, $firstName, $userMail, $userProfile, $userPassword);
             $user->setBirthDate($birthDate);
@@ -55,11 +53,28 @@ class UserController
             $user->setEmploymentStatus($employmentStatus);
             $user->setHiredDate($hiredDate);
 
+            /*
+            if (!$this->security->verifyCsrfToken($csrfToken)) {
+                DisplayController::messageAlert("Veuillez réessayer plus tard", DisplayController::ROUGE);
+                $this->redirectToRoute("register");
+            }
+
+            if ($firstName == false || $email == false || $userPassword == false || $confirmPassword == false) {
+                DisplayController::messageAlert("Tous les champs sont requis", DisplayController::ROUGE);
+                $this->redirectToRoute("register");
+            }
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                DisplayController::messageAlert("Email non valide", DisplayController::ROUGE);
+                $this->redirectToRoute("register");
+            }
+
+            if ($password !== $confirmPassword) {
+                DisplayController::messageAlert("MDP correspondent pas", DisplayController::ROUGE);
+                $this->redirectToRoute("register");
+            }*/
 
             $userManager = new UserManager();
-
-            echo ('<br>');
-            echo ('avant insertion user');
 
             $userInserted = $userManager->insertUser($user);
 
@@ -69,6 +84,6 @@ class UserController
                 "Erreur lors de la création de l'utilisateur";
             }
         }
-        echo ('en dehors du if');
+
     }
 }

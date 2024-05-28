@@ -19,32 +19,31 @@
         <article class="mb-3">
             <label for="situation">Situation</label>
             <select name="situation" id="situation">
-                <option value="1">Selectionner</option>
-                <option value="2">Célibataire</option>
-                <option value="3">Marié(e)</option>
-                <option value="4">Pacsé(e)</option>
-                <option value="5">En concubinage</option>
-                <option value="6">Divorcé(e)</option>
-                <option value="7">Veuf(ve)</option>
-                <option value="8">Séparé(e)</option>
-                <option value="9">En couple</option>
-                <option value="10">En union libre</option>
-                <option value="11">Fiancé(e)</option>
+                <option selected>Selectionner</option>
+                <option value="Célibataire">Célibataire</option>
+                <option value="Marié(e)">Marié(e)</option>
+                <option value="Pacsé(e)">Pacsé(e)</option>
+                <option value="En concubinage">En concubinage</option>
+                <option value="Divorcé(e)">Divorcé(e)</option>
+                <option value="Veuf(ve)">Veuf(ve)</option>
+                <option value="Séparé(e)">Séparé(e)</option>
+                <option value="En couple">En couple</option>
+                <option value="En union libre">En union libre</option>
+                <option value="Fiancé(e)">Fiancé(e)</option>
             </select>
         </article>
         <article class="mb-3">
             <label for="childs">Enfant:</label>
             <select class="form-select" aria-label="Default select example" name="childs" id="childs">
-                <option selected>Nombre
-                <option>
-                <option value="1">0</option>
-                <option value="2">1</option>
-                <option value="3">2</option>
-                <option value="4">3</option>
-                <option value="5">4</option>
-                <option value="6">5</option>
-                <option value="7">6</option>
-                <option value="8">7</option>
+                <option selected>Selectionner</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+
             </select>
         </article>
         <article class="mb-3">
@@ -387,11 +386,11 @@
             <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail">
         </article>
         <article class="mb-3">
-            <label for="userProfile">Profil:</label>
+            <label for="userProfile">Rôle:</label>
             <select name="userProfile" id="userProfile">
-                <option value="1">Selectionner</option>
-                <option value="2">Administrateur</option>
-                <option value="3">Employée</option>
+                <option selected>Selectionner</option>
+                <option value="Administrateur">Administrateur</option>
+                <option value="Employé">Employé</option>
             </select>
         </article>
         <article class="mb-3">
@@ -401,12 +400,13 @@
         <article class="mb-3">
             <label for="employmentStatus">Statut Emploi:</label>
             <select name="employmentStatus" id="employmentStatus">
-                <option value="1">Selectionner</option>
-                <option value="2">Contrat à durée indéterminée (CDI)</option>
-                <option value="3">Contrat à durée détérminée (CDD)</option>
-                <option value="4">CDD à ojet défini</option>
-                <option value="5">Contrat de travail temporaire ou d'intérim</option>
-                <option value="6">Contrat de travail à temps partiel</option>
+                <option selected>Selectionner</option>
+                <option value="Contrat à durée indéterminée (CDI)">Contrat à durée indéterminée (CDI)</option>
+                <option value="Contrat à durée détérminée (CDD)">Contrat à durée détérminée (CDD)</option>
+                <option value="CDD à ojet défini">CDD à ojet défini</option>
+                <option value="Contrat de travail temporaire ou d'intérim">Contrat de travail temporaire ou d'intérim
+                </option>
+                <option value="Contrat de travail à temps partiel">Contrat de travail à temps partiel</option>
             </select>
         </article>
         <article class="mb-3">

@@ -13,14 +13,12 @@ class UserManager
 
     public function __construct()
     {
-        echo ('<br>');
-        echo ('dans usermanager construct');
 
         try {
+            $this->db = new PDO("mysql:host=192.168.1.116;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
 
-            $this->db = new PDO("mysql:host=192.168.1.104;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
         } catch (Exception $exception) {
-            echo ($exception->getMessage());
+            echo ('<br>Erreur de connexion : ' . $exception->getMessage() . '<br>');
         }
     }
 
@@ -61,7 +59,7 @@ class UserManager
     /**
      * @param string $idEmployee
      * @param string $userPassword
-     * @return mixed
+     * @return bool
      */
     public function verifyPassword(string $idEmployee, string $userPassword): bool
     {
@@ -74,8 +72,16 @@ class UserManager
 
     public function getUserByIdEmployee(string $idEmployee): mixed
     {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE idEmployee=:idEmployee");
-        $stmt->execute(["idEmployee" => $idEmployee]);
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id_employee=?");
+        $stmt->execute(["id_employee" => $idEmployee]);
+        $user = $stmt->fetch();
+        return $user;
+    }
+
+    public function getUserByRole(string $userProfile): mixed
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE user_profile=?");
+        $stmt->execute(['user_profile' => $userProfile]);
         $user = $stmt->fetch();
         return $user;
     }

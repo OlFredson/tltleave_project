@@ -1,7 +1,9 @@
 <?php
 
 use App\Controllers\Admin\AdminController;
+use App\Controllers\Connexion\AuthController;
 use App\Controllers\Connexion\LoginController;
+use App\Controllers\Connexion\PasswordController;
 use App\Controllers\Employee\EmployeeController;
 use App\Controllers\User\UserController;
 
@@ -35,25 +37,26 @@ var_dump(__DIR__);
 var_dump(VIEWS_PATH);
 */
 
-$users = new LoginController();
+$usersAuth = new AuthController();
+$userPass = new PasswordController;
 $admin = new AdminController();
 $employee = new EmployeeController();
 $userController = new UserController();
 
 try {
     if (empty($_GET["page"])) {
-        $users->authentication();
+        $usersAuth->authentication();
     } else {
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));  # Cette ligne prends l'url et decoupe au niveau des /, cela à pour but de travailler avec les differents elements de notre URL . Ex : localhost:/tltleave/login
         switch ($url[0]) {
-            case "login":
-                $users->authentication();
+            case "authentication":
+                $usersAuth->authentication();
                 break;
             case "passwordforgot":
-                $users->passwordForgot();
+                $userPass->passwordForgot();
                 break;
             case "resetpassword":
-                $users->resetPassword();
+                $userPass->resetPassword();
                 break;
             case "dashboard":
                 $admin->dashboard();
@@ -84,6 +87,9 @@ try {
                 break;
             case 'submitusers':
                 $userController->add();
+                break;
+            case 'connexionOk':
+                $usersAuth->authValidation();
                 break;
             default:
                 throw new Exception("La page n'existe pas");
