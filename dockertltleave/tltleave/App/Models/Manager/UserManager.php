@@ -15,7 +15,7 @@ class UserManager
     {
 
         try {
-            $this->db = new PDO("mysql:host=192.168.1.116;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
+            $this->db = new PDO("mysql:host=192.168.118.1;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
 
         } catch (Exception $exception) {
             echo ('<br>Erreur de connexion : ' . $exception->getMessage() . '<br>');
@@ -29,15 +29,16 @@ class UserManager
 
     public function insertUser(Users $user): bool
     {
+        $addUser = false;
         try {
-            $stmt = $this->db->prepare("INSERT INTO users (user_name,firstname,birth_date,situation,childs,gender,user_address,zip_code,city,country,phone,user_mail,user_profile,user_role,employment_status,hired_date,user_password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt = $this->db->prepare("INSERT INTO users (user_name,firstname,birth_date,gender,situation,child,user_address,zip_code,city,country,phone,user_mail,user_profile,user_role,employement_status,hired_date,user_password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             $addUser = $stmt->execute([
                 $user->getUserName(),
                 $user->getFirstname(),
                 $user->getBirthDate() ? $user->getBirthDate()->format('Y-m-d') : null,
-                $user->getSituation(),
-                $user->getChilds(),
                 $user->getGender(),
+                $user->getSituation(),
+                $user->getChild(),
                 $user->getUserAddress(),
                 $user->getZipCode(),
                 $user->getCity(),

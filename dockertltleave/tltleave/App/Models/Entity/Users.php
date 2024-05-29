@@ -11,9 +11,9 @@ class Users
     private string $userName;
     private string $firstName;
     private ?DateTime $birthDate;
-    private ?string $situation;
-    private ?string $childs;
     private ?string $gender;
+    private ?string $situation;
+    private ?string $child;
     private ?string $userAddress;
     private ?string $zipCode;
     private ?string $city;
@@ -105,6 +105,21 @@ class Users
     /**
      * @return string
      */
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @param string $gender
+     */
+    public function setGender(?string $gender): void
+    {
+        $this->gender = $gender;
+    }
+    /**
+     * @return string
+     */
     public function getSituation(): ?string
     {
         return $this->situation;
@@ -121,33 +136,17 @@ class Users
     /**
      * @return string
      */
-    public function getChilds(): ?string
+    public function getChild(): ?string
     {
-        return $this->childs;
+        return $this->child;
     }
 
     /**
-     * @param string $childs
+     * @param string $child
      */
-    public function setChilds(?string $childs): void
+    public function setChild(?string $child): void
     {
-        $this->childs = $childs;
-    }
-
-    /**
-     * @return string
-     */
-    public function getGender(): ?string
-    {
-        return $this->gender;
-    }
-
-    /**
-     * @param string $gender
-     */
-    public function setGender(?string $gender): void
-    {
-        $this->gender = $gender;
+        $this->child = $child;
     }
 
     /**

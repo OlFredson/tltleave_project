@@ -73,7 +73,7 @@ try {
             case "calendar":
                 $admin->calendar();
                 break;
-            case "addUsers":
+            case "addusers":
                 $admin->addUsers();
                 break;
             case "dashboardemployee":

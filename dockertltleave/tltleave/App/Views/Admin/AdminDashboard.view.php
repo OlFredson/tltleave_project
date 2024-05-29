@@ -15,7 +15,7 @@
                             <p>Developpeur Front-End</p>
                         </div>
                         <p class="grid-add">Ajouter Admins</p>
-                        <a href="<?=URL?>addUsers"><i class="bi bi-plus-lg grid-plus"></i></a>
+                        <a href="<?=URL?>addusers"><i class="bi bi-plus-lg grid-plus"></i></a>
                     </div>
 
                 </div>

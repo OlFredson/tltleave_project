@@ -6,20 +6,29 @@
     <form action="/submitusers" method="POST">
         <article class="mb-3">
             <label for="userName" class="form-label">Nom:</label>
-            <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom">
+            <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom" pattern="^[A-Za-zÀ-ÿ'-]$" title="Merci de ne saisir que des lettres svp" required>
         </article>
         <article class="mb-3">
             <label for="firstName" class="form-label">Prénom:</label>
-            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Prenom">
+            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Prenom" pattern="^[A-Za-zÀ-ÿ'-]$" required>
         </article>
         <article class="mb-3">
             <label for="birthDate" class="form-label">Date de naissance:</label>
             <input type="date" name="birthDate" class="form-control" id="birthDate">
         </article>
         <article class="mb-3">
+            <label for="gender">Sexe:</label>
+            <select id="gender" name="gender">
+                <option selected></option>
+                <option value="Masculin">Masculin</option>
+                <option value="Féminin">Féminin</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </article>
+        <article class="mb-3">
             <label for="situation">Situation</label>
             <select name="situation" id="situation">
-                <option selected>Selectionner</option>
+                <option selected></option>
                 <option value="Célibataire">Célibataire</option>
                 <option value="Marié(e)">Marié(e)</option>
                 <option value="Pacsé(e)">Pacsé(e)</option>
@@ -33,9 +42,9 @@
             </select>
         </article>
         <article class="mb-3">
-            <label for="childs">Enfant:</label>
-            <select class="form-select" aria-label="Default select example" name="childs" id="childs">
-                <option selected>Selectionner</option>
+            <label for="child">Enfant:</label>
+            <select class="form-select" aria-label="Default select example" name="child" id="childs">
+                <option selected></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -47,21 +56,6 @@
             </select>
         </article>
         <article class="mb-3">
-            <label for="gender">Sexe:</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="gender-female">
-                <label class="form-check-label" for="gender-female">
-                    Feminin
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="gender" id="gender-male" checked>
-                <label class="form-check-label" for="gender-male">
-                    Masculin
-                </label>
-            </div>
-        </article>
-        <article class="mb-3">
             <fieldset>
                 <legend>Adresse:</legend>
                 <label for="userAddress" class="form-label">Numéro et rue:</label>
@@ -69,7 +63,7 @@
                     placeholder="ex: 1 rue de Paris">
 
                 <label for="zipCode" class="form-label">Code Postal:</label>
-                <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="ex :75001">
+                <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="ex :75001" pattern="^\d+$">
 
                 <label for="city" class="form-label">Ville:</label>
                 <input type="text" name="city" class="form-control" id="city" placeholder="ex : Paris">
@@ -77,7 +71,7 @@
                 <div class="mb-3">
                     <label for="country">Pays:</label>
                     <select name="country" id="country">
-                        <option value="selectionner">Selectionner</option>
+                        <option selected></option>
                         <optgroup label="A">
                             <option value="afghanistan">Afghanistan</option>
                             <option value="afrique-du-sud">Afrique du Sud</option>
@@ -383,12 +377,12 @@
         </article>
         <article class="mb-3">
             <label for="userMail" class="form-label">Adresse mail</label>
-            <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail">
+            <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail" required>
         </article>
         <article class="mb-3">
             <label for="userProfile">Rôle:</label>
-            <select name="userProfile" id="userProfile">
-                <option selected>Selectionner</option>
+            <select name="userProfile" id="userProfile" required>
+                <option selected></option>
                 <option value="Administrateur">Administrateur</option>
                 <option value="Employé">Employé</option>
             </select>
@@ -400,7 +394,7 @@
         <article class="mb-3">
             <label for="employmentStatus">Statut Emploi:</label>
             <select name="employmentStatus" id="employmentStatus">
-                <option selected>Selectionner</option>
+                <option selected></option>
                 <option value="Contrat à durée indéterminée (CDI)">Contrat à durée indéterminée (CDI)</option>
                 <option value="Contrat à durée détérminée (CDD)">Contrat à durée détérminée (CDD)</option>
                 <option value="CDD à ojet défini">CDD à ojet défini</option>
@@ -416,12 +410,12 @@
         <article class="mb-3">
             <label for="userPassword" class="form-label"></label>
             <input type="password" name="userPassword" class="form-control" id="userPassword"
-                placeholder="Mot de passe">
+                placeholder="Mot de passe" required>
         </article>
         <article class="mb-3">
             <label for="confirimPassword" class="form-label"></label>
             <input type="password" name="confirimPassword" class="form-control" id="confirimPassword"
-                placeholder="Confirmer Mot de passe">
+                placeholder="Confirmer Mot de passe" required>
         </article>
         <input type="hidden" name="csrf_token" value="<?= $token ?>">
         <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>

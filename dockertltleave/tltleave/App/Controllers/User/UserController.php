@@ -24,9 +24,9 @@ class UserController // Responsable de la gestion des utilisateurs (création, m
             $userName = $this->security->cleanInput($_POST['userName']);
             $firstName = $this->security->cleanInput($_POST['firstName']);
             $birthDate = new \DateTime($_POST['birthDate']);
-            $situation = $this->security->cleanInput($_POST['situation']);
-            $childs = $this->security->cleanInput($_POST['childs']);
             $gender = $this->security->cleanInput($_POST['gender']);
+            $situation = $this->security->cleanInput($_POST['situation']);
+            $child = $this->security->cleanInput($_POST['child']);
             $userAddress = $this->security->cleanInput($_POST['userAddress']);
             $zipCode = $this->security->cleanInput($_POST['zipCode']);
             $city = $this->security->cleanInput($_POST['city']);
@@ -41,10 +41,10 @@ class UserController // Responsable de la gestion des utilisateurs (création, m
 
             $user = new Users($userName, $firstName, $userMail, $userProfile, $userPassword);
             $user->setBirthDate($birthDate);
-            $user->setSituation($situation);
-            $user->setChilds($childs);
-            $user->setCity($city);
             $user->setGender($gender);
+            $user->setSituation($situation);
+            $user->setChild($child);
+            $user->setCity($city);
             $user->setUserAddress($userAddress);
             $user->setZipCode($zipCode);
             $user->setCountry($country);
