@@ -17,8 +17,5 @@ class EmployeeController extends AbstractController {
         $this->render("Employee/HistoricStatusRequests.view", ['title'=>$title]);
     }
 
-    public function leaveRequests() :void {
-        $title='Demande de congés';
-        $this->render("Employee/LeaveRequests.view", ['title'=>$title]);
-    }
+    
 }

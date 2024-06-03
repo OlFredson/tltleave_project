@@ -26,36 +26,57 @@ class AuthController extends AbstractController //Responsable de l'authentificat
 
     public function authValidation()
     {
-        echo 'dans fonction authvalidation <br>';
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo 'dans if du fonction authvalidation <br>';
-            $idEmployee = $_POST['idEmployee'];
-            $userPassword = $_POST['userPassword'];
+        // Assurez-vous que la session n'a pas déjà démarré avant de lancer une nouvelle session
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    // Régénérez l'ID de session après avoir vérifié les identifiants de l'utilisateur
+    session_regenerate_id();
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $idEmployee = $_POST['idEmployee'];
+        $userPassword = $_POST['userPassword'];
 
-            if ($idEmployee && $userPassword) {
-                $valid = $this->userManager->verifyPassword($idEmployee, $userPassword);
-                if ($valid) {
-                    echo 'dans if(valid) du fonction authvalidation br>';
-                    session_regenerate_id();
-                    $user = $this->userManager->getUserByIdEmployee($idEmployee);
-                    $_SESSION['user'] = $user;
+        echo "ID Employee: $idEmployee<br>";
+        echo "Password: $userPassword<br>";
 
-                    if ($user['userProfile'] === "Administrateur") {
-                        echo 'dans if(userProfile) du fonction authvalidation <br>';
-                        $this->redirecToRoute("dashboard");
-                    } elseif ($user['userProfile'] === 'Employé') {
-                        $this->redirecToRoute("dashboardemployee");
-                    } else {
-                        DisplayController::messageAlert("Role utlisateur non reconnu", DisplayController::ROUGE);
-                    }
+        if ($idEmployee && $userPassword) {
+            $valid = $this->userManager->verifyPassword($idEmployee, $userPassword);
+            echo "Juste avant la vérification de mot de passe<br>";
+            
+            if ($valid) {
+                
+                $user = $this->userManager->getUserByIdEmployee($idEmployee);
+                $_SESSION['user'] = $user;
+
+                if ($user['userProfile'] === "Administrateur") {
+                    $this->redirecToRoute("dashboard");
+                } elseif ($user['userProfile'] === 'Employé') {
+                    $this->redirecToRoute("dashboardemployee");
+                } else {
+                    DisplayController::messageAlert("Rôle utilisateur non reconnu", DisplayController::ROUGE);
                 }
-                $this->redirecToRoute("authentification");
             } else {
                 DisplayController::messageAlert("Identifiants incorrects", DisplayController::ROUGE);
-                $this->redirecToRoute("addUsers");
+                $this->redirecToRoute("authentication");
             }
         } else {
-
+            DisplayController::messageAlert("Identifiants non fournis", DisplayController::ROUGE);
+            $this->redirecToRoute("authentication");
         }
+    }
+}
+
+    public function logout()
+    {
+        session_start();
+        session_destroy(); // Détruit toutes les données de la session
+        // Rediriger vers la page de connexion
+        $this->redirecToRoute("authentication");
+    }
+
+    public function isAuthenticated()
+    {
+        session_start();
+        return isset($_SESSION['user']); // Vérifie si l'utilisateur est connecté
     }
 }

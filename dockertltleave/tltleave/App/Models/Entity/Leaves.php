@@ -12,24 +12,15 @@ class Leave {
     private int $employeeId;
     private int $leaveTypeId;
 
-    public function __construct(
-        int $leaveId,
-        string $beginDate,
-        string $endDate,
-        string $status,
-        int $employeeId,
-        int $leaveTypeId
-    ) {
-        $this->setLeaveId($leaveId);
+    public function __construct($beginDate,$endDate,$status) {
+
         $this->setBeginDate($beginDate);
         $this->setEndDate($endDate);
         $this->setStatus($status);
-        $this->setEmployeeId($employeeId);
-        $this->setLeaveTypeId($leaveTypeId);
     }
 
     /**
-     * @return int
+     * @return int 
      */
     public function getLeaveId() : int {
         return $this->leaveId;

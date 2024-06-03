@@ -1,0 +1,15 @@
+.error {
+    color: red;
+    font-size: 0.9em;
+}
+.invalid {
+    border-color: red;
+}
+
+
+
+/* BOuton sidebar actif */
+
+.circle:nth-child(2) {
+    background-color: #F8B550;
+}

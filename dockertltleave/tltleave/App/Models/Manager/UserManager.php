@@ -64,12 +64,22 @@ class UserManager
      */
     public function verifyPassword(string $idEmployee, string $userPassword): bool
     {
-        $user = $this->getUserByIdEmployee($idEmployee);
-        if ($user && password_verify($userPassword, $user['userPassword'])) {
-            return true;
+        try {
+            $stmt = $this->db->prepare('SELECT user_password FROM users WHERE id_employee = :id_employee');
+            $stmt->execute(['id_employee' => $idEmployee]);
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            var_dump($result); // Ajout de var_dump pour voir le résultat
+            if ($result) {
+                return password_verify($userPassword, $result['user_password']);
+            } else {
+                return false;
+            }
+        } catch (Exception $e) {
+            echo "Erreur lors de la vérification du mot de passe : " . $e->getMessage();
+            return false;
         }
-        return false;
     }
+
 
     public function getUserByIdEmployee(string $idEmployee): mixed
     {

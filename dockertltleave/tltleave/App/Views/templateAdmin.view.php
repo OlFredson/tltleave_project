@@ -4,20 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="<?= URL ?>public\assets\js\color.js"></script>
-
+    <!-- Lien bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Lien bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script> <!-- Script bootstrap  pour librairie, icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Liens CSS -->
     <link rel="stylesheet" href="\assets\css\template.css">
     <link rel="stylesheet" href="\assets\css\Admin\adminDashboard.css">
     <link rel="stylesheet" href="\assets\css\treatmentRequests.css">
     <link rel="stylesheet" href="\assets\css\Admin\userManagment.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Lien bootstrap -->
+    <link rel="stylesheet" href="\assets\css\Admin\addUsers.css">
+
     <title><?= $title ?></title>
 </head>
 
@@ -42,7 +41,7 @@
                             <li><a class="dropdown-item" href="#" target="_blank"><i class="bi bi-gear"></i>
                                     Parametres</a></li>
                             <hr>
-                            <li><button type="button" class="btn btn-light dropdown-btn">Se deconnecter</button></li>
+                            <li><button type="button" class="btn btn-light dropdown-btn" id="logoutButton">Se deconnecter</button></li>
                         </ul>
                     </div>
                 </article>
@@ -69,7 +68,12 @@
             <?= $content ?>
         </section>
     </main>
-
+    <!-- Script bootstrap  pour librairie, icons-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script> 
+    <script src="\assets\js\formAddUsers.js"></script>
 </body>
 
 </html>
