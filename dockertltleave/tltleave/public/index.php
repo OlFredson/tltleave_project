@@ -48,13 +48,13 @@ try {
         $usersAuth->authentication();
     } else {
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));  # Cette ligne prends l'url et decoupe au niveau des /, cela à pour but de travailler avec les differents elements de notre URL . Ex : localhost:/tltleave/login
-
-          // Vérifiez l'authentification avant d'accéder aux pages protégées
+        /*
+        // Vérifiez l'authentification avant d'accéder aux pages protégées
         $protectedPages = ['dashboard', 'usermanagement', 'treatmentrequests', 'statistics', 'calendar', 'addusers', 'dashboardemployee', 'statusrequests', 'leaverequests'];
         
         if (in_array($url[0], $protectedPages) && !$usersAuth->isAuthenticated()) {
             throw new Exception("Accès interdit: Vous devez être connecté pour accéder à cette page.");
-        }
+        }*/
         switch ($url[0]) {
             case "authentication":
                 $usersAuth->authentication();

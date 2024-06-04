@@ -2,7 +2,6 @@
 
 namespace App\Models\Manager;
 
-
 use App\Models\Entity\Users;
 use Exception;
 use PDO;
@@ -15,7 +14,7 @@ class UserManager
     {
 
         try {
-            $this->db = new PDO("mysql:host=192.168.118.1;dbname=tltleavedb;charset=utf8;port=3306", "tlt_user", "tlt_password");
+            $this->db = new PDO("mysql:host=192.168.1.118;dbname=tltleavedb;charset=utf8;port=3307", "tlt_user", "tlt_password");
 
         } catch (Exception $exception) {
             echo ('<br>Erreur de connexion : ' . $exception->getMessage() . '<br>');
@@ -31,7 +30,7 @@ class UserManager
     {
         $addUser = false;
         try {
-            $stmt = $this->db->prepare("INSERT INTO users (user_name,firstname,birth_date,gender,situation,child,user_address,zip_code,city,country,phone,user_mail,user_profile,user_role,employement_status,hired_date,user_password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            $stmt = $this->db->prepare("INSERT INTO users (user_name,firstname,birth_date,gender,situation,child,user_address,zip_code,city,country,phone,user_mail,user_image,user_profile,user_role,employement_status,hired_date,user_password) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             $addUser = $stmt->execute([
                 $user->getUserName(),
                 $user->getFirstname(),
@@ -45,6 +44,7 @@ class UserManager
                 $user->getCountry(),
                 $user->getPhone(),
                 $user->getUserMail(),
+                $user->getUserImage(),
                 $user->getUserProfile(),
                 $user->getUserRole(),
                 $user->getEmploymentStatus(),
@@ -65,7 +65,7 @@ class UserManager
     public function verifyPassword(string $idEmployee, string $userPassword): bool
     {
         try {
-            $stmt = $this->db->prepare('SELECT user_password FROM users WHERE id_employee = :id_employee');
+            $stmt = $this->db->prepare('SELECT user_password FROM users WHERE id_employee = ?');
             $stmt->execute(['id_employee' => $idEmployee]);
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             var_dump($result); // Ajout de var_dump pour voir le résultat
@@ -95,5 +95,12 @@ class UserManager
         $stmt->execute(['user_profile' => $userProfile]);
         $user = $stmt->fetch();
         return $user;
+    }
+
+    public function getAllUsers(): array
+    {
+        $stmt = $this->db->prepare("SELECT * FROM users");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

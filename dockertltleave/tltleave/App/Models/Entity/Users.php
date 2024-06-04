@@ -20,6 +20,7 @@ class Users
     private ?string $country;
     private ?string $phone;
     private string $userMail;
+    private ?string $userImage;
     private string $userProfile;
     private ?string $userRole;
     private ?string $employmentStatus;
@@ -248,6 +249,22 @@ class Users
     /**
      * @return string
      */
+    public function getUserImage(): ?string
+    {
+        return $this->userImage;
+    }
+
+    /**
+     * @param string $userImage
+     */
+    public function setUserImage(?string $userImage): void
+    {
+        $this->userImage = $userImage;
+    }
+
+    /**
+     * @return string
+     */
     public function getUserProfile(): string
     {
         return $this->userProfile;
@@ -329,4 +346,5 @@ class Users
         assurez-vous que lors de la vérification du mot de passe (par exemple, lors de la connexion de l'utilisateur), 
         vous utilisez password_verify() pour comparer le mot de passe haché avec le mot de passe fourni.*/
     }
+
 }

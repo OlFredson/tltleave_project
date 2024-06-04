@@ -89,97 +89,36 @@
     display: flex;
     justify-content: center;
 }
+
 /***************************** Grid Cards **************************/
 
 .grid-cards {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: 
-    "grid-item1 grid-item2 grid-item3 grid-item4"
-    "grid-item5 grid-item6 grid-item7 grid-item8";
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    gap: 5rem;
-    width: 120rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 120rem;
     margin-top: 2rem;
-
 }
 
-.grid-item1 { 
-    grid-area: grid-item1;
-    background: linear-gradient(180deg,rgb(174,144,99,80%), white, white);
+.grid-item {
+    background: linear-gradient(180deg, rgb(174,144,99,80%), white, white);
     padding-top: 1rem;
-    box-shadow :0px 15px 10px 1px rgba(85, 85, 85, 0.25);
+    box-shadow: 0px 15px 10px 1px rgba(85, 85, 85, 0.25);
     border-radius: 2rem;
     width: 20rem;
-    
-}
-.grid-item2 { 
-    grid-area: grid-item2;
-    background: linear-gradient(180deg,  #F8B550, white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item3 { 
-    grid-area: grid-item3;
-    background: linear-gradient(180deg,rgb(174,144,99,80%), white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item4 { 
-    grid-area: grid-item4;
-    background: linear-gradient(180deg,  #F8B550, white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item5 { 
-    grid-area: grid-item5;
-    background: linear-gradient(180deg,rgb(174,144,99,80%), white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item6 { 
-    grid-area: grid-item6;
-    background: linear-gradient(180deg,  #F8B550, white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item7 { 
-    grid-area: grid-item7;
-    background: linear-gradient(180deg,  #F8B550, white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;
-    width: 20rem;
-}
-.grid-item8 { 
-    grid-area: grid-item8;
-    background: linear-gradient(180deg,rgb(174,144,99,80%), white, white);
-    padding-top: 1rem;
-    box-shadow :0px 15px 20px 1px rgba(85, 85, 85, 0.25);
-    border-radius: 2rem;border-radius: 2rem;
-    width: 18rem;
 }
 
+.grid-item:nth-child(even) {
+    background: linear-gradient(180deg, #F8B550, white, white);
+}
 
 .cercle {
     width: 6rem;
-    height: 6rem; 
+    height: 6rem;
     border-radius: 100%;
     overflow: hidden;
-    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.25);
     margin-bottom: 1rem;
     list-style-type: none;
 }
@@ -203,11 +142,10 @@ h3, p {
 }
 
 .photo p:nth-of-type(2) {
-    background-color: rgb(174,144,99,30%) ;
+    background-color: rgb(174,144,99,30%);
     border-radius: 1rem;
     height: 1.5rem;
     width: 12rem;
-
 }
 
 .position {

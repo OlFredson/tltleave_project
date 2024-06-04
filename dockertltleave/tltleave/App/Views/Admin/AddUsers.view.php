@@ -1,16 +1,19 @@
 <!-------------------------------------------------------- Form ------------------------------------------------->
 
-<h2 class="breadcrumb" ><a href="usermanagement" class >Gestion d'utilisateurs</a> &raquo; <span>Ajout utilisateurs</span></h2>
+<h2 class="breadcrumb"><a href="usermanagement" class>Gestion d'utilisateurs</a> &raquo; <span>Ajout utilisateurs</span>
+</h2>
 <hr>
 <section class="form-container">
     <form action="/submitusers" method="POST">
         <article class="mb-3">
             <label for="userName" class="form-label">Nom:</label>
-            <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom" pattern="^[A-Za-zÀ-ÿ'-]$" title="Merci de ne saisir que des lettres svp" required>
+            <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom"
+                pattern="^[A-Za-zÀ-ÿ'-]$" title="Merci de ne saisir que des lettres svp" required>
         </article>
         <article class="mb-3">
             <label for="firstName" class="form-label">Prénom:</label>
-            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Prenom" pattern="^[A-Za-zÀ-ÿ'-]$" required>
+            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Prenom"
+                pattern="^[A-Za-zÀ-ÿ'-]$" required>
         </article>
         <article class="mb-3">
             <label for="birthDate" class="form-label">Date de naissance:</label>
@@ -63,10 +66,12 @@
                     placeholder="ex: 1 rue de Paris">
 
                 <label for="zipCode" class="form-label">Code Postal:</label>
-                <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="ex :75001" pattern="^\d+$">
+                <input type="text" name="zipCode" class="form-control" id="zipCode" placeholder="ex :75001"
+                    pattern="^\d+$">
 
                 <label for="city" class="form-label">Ville:</label>
-                <input type="text" name="city" class="form-control" id="city" placeholder="ex : Paris" pattern="^[A-Za-zÀ-ÿ'-]$">
+                <input type="text" name="city" class="form-control" id="city" placeholder="ex : Paris"
+                    pattern="^[A-Za-zÀ-ÿ'-]$">
 
                 <div class="mb-3">
                     <label for="country">Pays:</label>
@@ -373,11 +378,17 @@
         </article>
         <article class="mb-3">
             <label for="phone" class="form-label">Numéro de Téléphone</label>
-            <input type="text" name="phone" class="form-control" id="phone" placeholder="Téléphone" pattern="^\+?[ .-]\d{1,15}$">
+            <input type="text" name="phone" class="form-control" id="phone" placeholder="Téléphone"
+                pattern="^\+?[ .-]\d{1,15}$">
         </article>
         <article class="mb-3">
             <label for="userMail" class="form-label">Adresse mail</label>
-            <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail" required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+            <input type="email" name="userMail" class="form-control" id="userMail" placeholder="@mail" required
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+        </article>
+        <article class="mb-3">
+            <label for="userImage">Photo utilisateur:</label>
+            <input type="file" name="userImage" id="userImage">
         </article>
         <article class="mb-3">
             <label for="userProfile">Rôle:</label>
@@ -389,7 +400,8 @@
         </article>
         <article class="mb-3">
             <label for="userRole">Poste:</label>
-            <input type="text" name="userRole" id="userRole" placeholder="ex : Adminstrateur Réseau" pattern="^[A-Za-z-]$">
+            <input type="text" name="userRole" id="userRole" placeholder="ex : Adminstrateur Réseau"
+                pattern="^[A-Za-z-]$">
         </article>
         <article class="mb-3">
             <label for="employmentStatus">Statut Emploi:</label>
@@ -409,13 +421,17 @@
         </article>
         <article class="mb-3">
             <label for="userPassword" class="form-label"></label>
-            <input type="password" name="userPassword" class="form-control" id="userPassword"
-                placeholder="Mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" title="Au moins 1 minuscule, 1 Majuscule, 1 chiffre, 1 caractère spéciale ($,@,%,*, etc) et au moins 8 caractères." required>
+            <input type="password" name="userPassword" class="form-control" id="userPassword" placeholder="Mot de passe"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                title="Au moins 1 minuscule, 1 Majuscule, 1 chiffre, 1 caractère spéciale ($,@,%,*, etc) et au moins 8 caractères."
+                required>
         </article>
         <article class="mb-3">
-            <label for="confirimPassword" class="form-label"></label>
-            <input type="password" name="confirimPassword" class="form-control" id="confirimPassword"
-                placeholder="Confirmer Mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" title="Au moins 1 minuscule, 1 Majuscule, 1 chiffre, 1 caractère spéciale ($,@,%,*, etc) et au moins 8 caractères." required>
+            <label for="confirmPassword" class="form-label"></label>
+            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+                placeholder="Confirmer Mot de passe" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$"
+                title="Au moins 1 minuscule, 1 Majuscule, 1 chiffre, 1 caractère spéciale ($,@,%,*, etc) et au moins 8 caractères."
+                required>
         </article>
         <input type="hidden" name="csrf_token" value="<?= $token ?>">
         <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>

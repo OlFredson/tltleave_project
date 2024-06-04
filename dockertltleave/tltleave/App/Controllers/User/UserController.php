@@ -2,11 +2,12 @@
 
 namespace App\Controllers\User;
 
+use App\Controllers\AbstractController;
 use App\Controllers\SecurityController;
 use App\Models\Entity\Users;
 use App\Models\Manager\UserManager;
 
-class UserController // Responsable de la gestion des utilisateurs (création, mise à jour, suppression)
+class UserController extends AbstractController// Responsable de la gestion des utilisateurs (création, mise à jour, suppression)
 {
     private SecurityController $security;
 
@@ -38,6 +39,7 @@ class UserController // Responsable de la gestion des utilisateurs (création, m
             $employmentStatus = $this->security->cleanInput($_POST['employmentStatus']);
             $hiredDate = new \DateTime($_POST['hiredDate']);
             $userPassword = $this->security->cleanInput($_POST['userPassword']);
+            $userImage = $this->security->cleanInput($_POST['userImage']);
 
             $user = new Users($userName, $firstName, $userMail, $userProfile, $userPassword);
             $user->setBirthDate($birthDate);
@@ -52,6 +54,7 @@ class UserController // Responsable de la gestion des utilisateurs (création, m
             $user->setUserRole($userRole);
             $user->setEmploymentStatus($employmentStatus);
             $user->setHiredDate($hiredDate);
+            $user->setUserImage($userImage);
 
             /*
             if (!$this->security->verifyCsrfToken($csrfToken)) {
