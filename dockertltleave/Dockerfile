@@ -13,8 +13,14 @@ RUN apt-get update && apt-get upgrade -y \
     && docker-php-ext-enable mysqli pdo pdo_mysql \
     #Cette commande active les extensions PHP installées précédement
     && sed -i 's!/var/www/html!/var/www/html/tltleave/public!g' /etc/apache2/sites-available/000-default.conf \
-    && sed -i 's!/var/www/html!/var/www/html/tltleave/public!g' /etc/apache2/apache2.conf
+    && sed -i 's!/var/www/html!/var/www/html/tltleave/public!g' /etc/apache2/apache2.conf \
     # Configuration d'Apache pour utiliser /var/www/html/public comme DocumentRoot
+    useradd -m Uleave \
+    # Créer un utilisateur non root
+    chown -R myuser:myuser /var/www/html
+    # Change le propriétaire des fichiers de l'application à l'utilisateur non root
+
+USER Uleave
 
 COPY ./tltleave/App /var/www/html/tltleave/App
 COPY ./tltleave/public /var/www/html/tltleave/public
