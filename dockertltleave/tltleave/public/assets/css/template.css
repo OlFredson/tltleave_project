@@ -136,7 +136,6 @@ main {
     display: flex;
     justify-content: space-around;
     width: 10vh;
-    margin-left: 60rem;
 }
 
 #sidebar ul {
@@ -144,11 +143,11 @@ main {
     flex-direction: column;
     list-style-type: none;
     margin-top: 2rem;
-    
+
 }
 
 .circle {
-    height: 6vh; 
+    height: 6vh;
     border-radius: 100%;
     overflow: hidden;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
@@ -161,6 +160,7 @@ main {
 .circle:hover{
     scale: 1.1;
 }
+
 /***************************************************************************/
 
 /**************************** Style part container ******************************/
@@ -180,5 +180,5 @@ hr {
     margin-top: 1rem;
     margin-left: 1rem;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
-    width: 100vw;
-}                                                                                                                     
+    width: 300rem;
+}

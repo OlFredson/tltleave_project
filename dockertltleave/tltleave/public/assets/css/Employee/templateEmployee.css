@@ -144,11 +144,11 @@ main {
     flex-direction: column;
     list-style-type: none;
     margin-top: 2rem;
-    
+
 }
 
 .circle {
-    height: 6vh; 
+    height: 6vh;
     border-radius: 100%;
     overflow: hidden;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
@@ -176,4 +176,10 @@ hr {
     margin-left: 2rem;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
     width: 100%;
-}                                                                                                                     
+}
+
+
+/* Effets*/
+.circle:hover{
+    scale: 1.1;
+}

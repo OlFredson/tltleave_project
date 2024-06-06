@@ -1,41 +1,65 @@
             <h2>Dashboard</h2>
             <hr>
-            <article class="grid-container">
-                <div class="grid-item user-mgmt">
-                    <h3>Gestion des utlisateurs</h3>
+            <section class="grid-container">
+                <article class="grid-item user-mgmt">
+                    <h3 id="h3dashboard">Gestion des utlisateurs</h3>
                     <div class="grid-users-container">
-                        <h4 class="grid-admin"><a href="">Administrateurs</a></h4>
-                        <h4 class="grid-employee"><a href="">Collaborateurs</a></h4>
-                        <div class="grid-user1">
-                            <a href=""><p>Thierry Henry</p></a>
-                            <p>Developpeur Full-stack</p>
+                        <h4 class="grid-admin" id="h4dashboard"><a href="">Administrateurs</a></h4>
+                        <h4 class="grid-employee" id="h4dashboard"><a href="">Collaborateurs</a></h4>
+                        <div class="grid-user1 circle-dashboard">
+                            <div class="circle-user"></div>
+                            <div class="user-dash">
+                                <a href="" class="p-user-dashboard"><p>Fredson Oliveira</p></a>
+                                <p>Developpeur Full-stack</p>
+                            </div>
                         </div>
-                        <div class="grid-user2">
-                            <p><a href="">Zinedine Zidane</a></p>
-                            <p>Developpeur Front-End</p>
+                        <div class="grid-user2 circle-dashboard">
+                            <div class="circle-user"></div>
+                            <div class="user-dash">
+                                <a href="" class="p-user-dashboard"><p>Sonia Waag</p></a>
+                                <p>Developpeur Front-End</p>
+                            </div>
                         </div>
                         <p class="grid-add">Ajouter Admins</p>
                         <a href="<?=URL?>addusers"><i class="bi bi-plus-lg grid-plus"></i></a>
                     </div>
 
-                </div>
-                <div class="grid-item grid-treatment">
-                    <h3>Traitement des demandes</h3>
+                </article>
+                <article class="grid-item grid-treatment">
+                    <h3 id="h3dashboard">Traitement des demandes</h3>
                     <div class="grid-treatment-items">
-                        <h4 class="item-pending">En attente</h4>
+                        <h4 class="item-pending " id="h4dashboard">En attente</h4>
                         <div class="circle-pending"></div>
                         <div class="separation1"></div>
-                        <h4 class="item-validated">Validées</h4>
+                        <h4 class="item-validated" id="h4dashboard">Validées</h4>
                         <div class="circle-validated"></div>
                         <div class="separation2"></div>
-                        <h4 class="item-refused">Refusées</h4>
+                        <h4 class="item-refused" id="h4dashboard">Refusées</h4>
                         <div class="circle-refused"></div>
                     </div>
-                </div>
-                <div class="grid-item statistics">
-                    <h3>Statistiques</h3>
-                </div>
-                <div class="grid-item calendar">
-                    <h3>Calendrier de presence</h3>
-                </div>
-            </article>     
+                </article>
+                <article class="grid-item statistics">
+                    <h3 id="h3dashboard">Statistiques</h3>
+                    <img src="\assets\images\ex\stats.PNG" alt="" class="img-stats" width="350rem">
+                    <img src="\assets\images\ex\stats2.PNG" alt="" class="img-stats" width="350rem">
+                </article>
+                <article class="grid-item calendar">
+                    <h3 id="h3dashboard">Calendrier de presence</h3>
+                    <h5>Absences</h5>
+                    <p class="p-calendar">Aujourd'hui</p>
+                    <div class="grid-user1 circle-dashboard">
+                        <div class="circle-user"></div>
+                        <div class="user-dash">
+                            <a href="" class="p-user-dashboard"><p>Ichigo Kurosaki</p></a>
+                            <p>Developpeur Full-stack</p>
+                        </div>
+                    </div>
+                    <div class="grid-user1 circle-dashboard">
+                        <div class="circle-user"></div>
+                        <div class="user-dash">
+                            <a href="" class="p-user-dashboard"><p>Luffy Mugiwara</p></a>
+                            <p>Developpeur Full-stack</p>
+                        </div>
+                    </div>
+                </article>
+            </section>

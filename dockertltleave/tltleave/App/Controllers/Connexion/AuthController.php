@@ -7,27 +7,37 @@ use App\Controllers\DisplayController;
 use App\Controllers\SecurityController;
 use App\Models\Manager\UserManager;
 
-class AuthController extends AbstractController // Responsable de l'authentification (connexion, déconnexion)
+// Classe responsable de l'authentification (connexion, déconnexion)
+class AuthController extends AbstractController
 {
     private SecurityController $security;
     private UserManager $userManager;
+
     public function __construct()
     {
+        // Initialise le contrôleur de sécurité et le gestionnaire d'utilisateurs.
         $this->security = new SecurityController();
         $this->userManager = new UserManager();
     }
 
+    /**
+     * Affiche la page d'authentification.
+     */
     public function authentication(): void
     {
         $title = "Authentification";
+        // Rendu de la vue d'authentification avec le titre.
         $this->render("Connexion/Login.view", ['title' => $title]);
     }
 
+    /**
+     * Valide les informations d'authentification fournies par l'utilisateur.
+     */
     public function authValidation(): void
     {
-        ob_start(); // Commencer la capture de la sortie
-
+        // Vérifie si la méthode de requête est POST (soumission du formulaire).
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Démarre la session si elle n'est pas déjà démarrée.
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
             }
@@ -35,68 +45,69 @@ class AuthController extends AbstractController // Responsable de l'authentifica
             $idEmployee = $_POST['idEmployee'];
             $userPassword = $_POST['userPassword'];
 
-            // Utiliser error_log pour enregistrer les messages de débogage
-            error_log("ID Employee: $idEmployee");
-            error_log("Password: $userPassword");
-            echo 'dans if ($_SERVER[REQUEST_METHOD)';
-
+            // Vérifie si les identifiants sont fournis.
             if ($idEmployee && $userPassword) {
+                // Valide le mot de passe de l'utilisateur.
                 $valid = $this->userManager->verifyPassword($idEmployee, $userPassword);
-                error_log("Juste avant la vérification de mot de passe");
-                echo 'dans if ($idEmployee && $userPassword)';
 
                 if ($valid) {
-                    session_regenerate_id(); // Régénérer l'ID de session après une connexion réussie
+                    // Régénère l'ID de session après une connexion réussie pour des raisons de sécurité.
+                    session_regenerate_id();
+                    // Récupère les informations de l'utilisateur.
                     $user = $this->userManager->getUserByIdEmployee($idEmployee);
+                    // Stocke les informations de l'utilisateur dans la session.
                     $_SESSION['user'] = $user;
-                    echo 'dans if ($valid)';
 
-                    ob_end_clean(); // Nettoyer la sortie tamponnée avant la redirection
-
+                    // Redirige en fonction du profil de l'utilisateur.
                     if ($user['userProfile'] === "Administrateur") {
                         $this->redirecToRoute("dashboard");
-                        echo 'dans if ($user[userProfile] === "Administrateur")';
-
                     } elseif ($user['userProfile'] === 'Employé') {
                         $this->redirecToRoute("dashboardemployee");
-                        echo 'dans elseif ($user[userProfile] === Employé)';
-
                     } else {
                         DisplayController::messageAlert("Rôle utilisateur non reconnu", DisplayController::ROUGE);
                         $this->redirecToRoute("authentication");
-                        echo 'dans else';
                     }
+
                 } else {
                     DisplayController::messageAlert("Identifiants incorrects", DisplayController::ROUGE);
-                    ob_end_clean(); // Nettoyer la sortie tamponnée avant la redirection
+                    // Nettoie la sortie tamponnée avant la redirection.
+                    ob_end_clean();
                     $this->redirecToRoute("authentication");
-                    echo 'dans le deuxieme else apres ob_end_clean';
                 }
             } else {
                 DisplayController::messageAlert("Identifiants non fournis", DisplayController::ROUGE);
-                ob_end_clean(); // Nettoyer la sortie tamponnée avant la redirection
+                // Nettoie la sortie tamponnée avant la redirection.
+                ob_end_clean();
                 $this->redirecToRoute("authentication");
-                echo 'dans le troisième else apres ob_end_clean';
             }
         }
-
-        ob_end_clean(); // Nettoyer la sortie tamponnée
     }
 
+    /**
+     * Déconnecte l'utilisateur en détruisant la session.
+     */
     public function logout(): void
     {
+        // Démarre la session si elle n'est pas déjà démarrée.
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        session_destroy(); // Détruit toutes les données de la session
+        // Détruit toutes les données de la session.
+        session_destroy();
+        // Redirige vers la page d'authentification.
         $this->redirecToRoute("authentication");
     }
 
+    /**
+     * Vérifie si l'utilisateur est authentifié.
+     */
     public function isAuthenticated(): bool
     {
+        // Démarre la session si elle n'est pas déjà démarrée.
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        return isset($_SESSION['user']); // Vérifie si l'utilisateur est connecté
+        // Vérifie si l'utilisateur est connecté.
+        return isset($_SESSION['user']);
     }
 }

@@ -4,3 +4,14 @@ background-color: rgb(174,144,99, 20%);
 border-radius: 3rem;
 box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
 }
+
+hr {
+    border: solid 1px rgb(174,144,99, 50%) ;
+}
+
+.img-stats {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 3rem;
+    border-radius: 10px;
+}

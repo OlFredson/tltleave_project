@@ -4,11 +4,11 @@
 
 .grid-container {
     display: grid;
-    margin-top: 2rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     grid-template-columns: repeat(2, 30vw);
     grid-template-rows: repeat(2, 15vw);
-    gap: 3rem 10rem;
+    gap: 3rem 3rem;
     text-align: center;
     justify-content: center;
     font-size: x-large;
@@ -19,17 +19,18 @@
     background-color: rgb(174,144,99, 20%);
     border-radius: 3rem;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+    width: 25rem;
 }
 
-h3 {
-    font-size: x-large;
+#h3dashboard {
+    font-size: large;
     font-weight: bold;
     margin-bottom: 1rem;
     margin-top: 1rem;
 }
 
-h4{
-    font-size: large;
+#h4dashboard{
+    font-size: medium;
 }
 
 p {
@@ -41,11 +42,26 @@ a{
     color: black;
     font-weight: bold;
 }
+
+.circle-dashboard {
+    display: flex;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.circle-user {
+    background-color: #9d9c9b;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
 /**************************************************************************/
 
 /************************* Grid User Management ***************************/
 
-.grid-users-container {  
+.grid-users-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -56,14 +72,14 @@ a{
     "grid-user2 grid-plus";
 }
 
-.grid-admin { 
+.grid-admin {
     grid-area: grid-admin;
     background-color: rgb(174,144,99, 50%);
     align-content: center;
     margin-bottom: 0;
 }
 
-.grid-employee { 
+.grid-employee {
     grid-area: grid-employee;
     background-color: rgba(252, 249, 245, 0.619);
     margin: 0;
@@ -71,22 +87,22 @@ a{
     color: rgb(204, 204, 204);
 }
 
-.grid-user1 { 
+.grid-user1 {
     grid-area: grid-user1;
     text-decoration: none;
 }
 
-.grid-user2 { 
+.grid-user2 {
     grid-area: grid-user2;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
-.grid-add { 
-    grid-area: grid-add; 
+.grid-add {
+    grid-area: grid-add;
 }
 
 .grid-plus {
-    grid-area: grid-plus; 
+    grid-area: grid-plus;
 }
 
 .grid-user1 p:nth-child(2), .grid-user2 p:nth-child(2) {
@@ -109,9 +125,9 @@ a{
     margin-right: 3rem;
     margin-top: 1rem;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
     grid-auto-flow: row;
-    grid-template-areas: 
+    grid-template-areas:
     "item-pending separation1 item-validated separation2 item-refused"
     "circle-pending separation1 circle-validated separation2 circle-refused";
 }
@@ -138,7 +154,7 @@ a{
 
 .circle-validated {
     grid-area: circle-validated;
-    
+
 }
 
 .separation2 {
@@ -159,7 +175,7 @@ a{
 .circle-pending {
     background-color: #F8B550;
     width: 4vw;
-    height: 4vw; 
+    height: 4vw;
     border-radius: 100%;
     overflow: hidden;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
@@ -168,18 +184,41 @@ a{
 .circle-validated {
     background-color: #57893F ;
     width: 4vw;
-    height: 4vw; 
+    height: 4vw;
     border-radius: 100%;
     overflow: hidden;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
-
 }
 
 .circle-refused {
     background-color: rgb(255,0,0,50%) ;
     width: 4vw;
-    height: 4vw; 
+    height: 4vw;
     border-radius: 100%;
     overflow: hidden;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+/*************************** Statistiques part *******************************/
+
+.img-stats {
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+/*************************** Calendar part *******************************/
+
+.circle-calendar {
+    background-color: rgba(86, 82, 82, 0.5) ;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    overflow: hidden;
+    box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+h5, .p-calendar {
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 0;
 }

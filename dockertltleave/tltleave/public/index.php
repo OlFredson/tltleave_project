@@ -1,57 +1,52 @@
 <?php
 
+
 use App\Controllers\Admin\AdminController;
 use App\Controllers\Connexion\AuthController;
 use App\Controllers\Connexion\PasswordController;
 use App\Controllers\Employee\EmployeeController;
+use App\Controllers\Leave\LeaveRequestsController;
 use App\Controllers\User\UserController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 
+# Cette  définit une constante "URL" qui contient l'URL de base de l'appli, en supprimant les parties "public/" et "index.php" de l'URL,
+#en fonction du protocole utilisé (HTTP ou HTTPS) et du nom d'hôte du serveur
 define(
-    'URL',
-    str_replace(
-        "public/",
-        "",            # Fonction qui supprime "public/" de l'URL de base
-        str_replace(
-            "index.php",
-            "",               # Fonction qui supprime "index.php" de l'URL de base
+    'URL',str_replace("public/","",        # Fonction qui supprime "public/" de l'URL de base
+        str_replace("index.php","",        # Fonction qui supprime "index.php" de l'URL de base
             (isset($_SERVER["HTTPS"]) ? "https" : "http") # Opération ternaire qui vérifie si le protocole HTTPS est utilisé. S'il est défini, retourne "https", sinon retourne "http"
             . "://$_SERVER[HTTP_HOST]"                 # SuperGlobale qui contient le nom d'hôte du serveur où le script est exécuté
-            . dirname($_SERVER['PHP_SELF']) . ''
-        )
+            . dirname($_SERVER['PHP_SELF']) . '')
     )      # Fonction qui renvoie le chemin du répertoire contenant le script PHP en cours d'exécution
 );
-# Cette ligne de code définit une constante "URL" qui contient l'URL de base de l'appli, en supprimant les parties "public/" et "index.php" de l'URL, 
-#en fonction du protocole utilisé (HTTP ou HTTPS) et du nom d'hôte du serveur
 
 
+// Définit le chemin absolu vers le répertoire contenant les fichiers de vue
 define('VIEWS_PATH', __DIR__ . '/../App/Views/');
 
-/*
-var_dump(URL);
-
-var_dump(__DIR__);
-var_dump(VIEWS_PATH);
-*/
-
+// Instancier les contrôleurs nécessaires
 $usersAuth = new AuthController();
 $userPass = new PasswordController;
 $admin = new AdminController();
 $employee = new EmployeeController();
-/*$leaveEmployee = new LeaveRequestsController();*/
+$leaveEmployee = new LeaveRequestsController();
 $userController = new UserController();
 
 try {
+    // Gérer les demandes de pages
+
     if (empty($_GET["page"])) {
+        // Si aucune page spécifiée, rediriger vers la page d'authentification
         $usersAuth->authentication();
+
     } else {
+         // Analyse l'URL demandée et route vers les méthodes appropriées des contrôleurs
         $url = explode("/", filter_var($_GET['page'], FILTER_SANITIZE_URL));  # Cette ligne prends l'url et decoupe au niveau des /, cela à pour but de travailler avec les differents elements de notre URL . Ex : localhost:/tltleave/login
         /*
-        // Vérifiez l'authentification avant d'accéder aux pages protégées
         $protectedPages = ['dashboard', 'usermanagement', 'treatmentrequests', 'statistics', 'calendar', 'addusers', 'dashboardemployee', 'statusrequests', 'leaverequests'];
-        
+
         if (in_array($url[0], $protectedPages) && !$usersAuth->isAuthenticated()) {
             throw new Exception("Accès interdit: Vous devez être connecté pour accéder à cette page.");
         }*/
@@ -98,11 +93,17 @@ try {
             case 'connexionOk':
                 $usersAuth->authValidation();
                 break;
+            case 'updateProfile':
+                echo json_encode($_POST);
+                // UPDATE
+                break;
             default:
+            // Gere le cas où la page demandée n'existe pas
                 throw new Exception("La page n'existe pas");
         }
     }
 } catch (Exception $exception) {
+    // Gere les exceptions et affiche la page d'erreur
     $error = $exception->getMessage();
     include VIEWS_PATH . "error.view.php";
 }

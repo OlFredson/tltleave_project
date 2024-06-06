@@ -7,21 +7,24 @@ use App\Controllers\SecurityController;
 use App\Models\Entity\Users;
 use App\Models\Manager\UserManager;
 
-class UserController extends AbstractController// Responsable de la gestion des utilisateurs (création, mise à jour, suppression)
+// Classe responsable de la gestion des utilisateurs (création, mise à jour, suppression)
+class UserController extends AbstractController
 {
     private SecurityController $security;
 
     public function __construct()
     {
+        // Initialise le contrôleur de sécurité pour gérer la sécurité des entrées utilisateur.
         $this->security = new SecurityController();
     }
-    // Vérifie si le formulaire a bien été soumis
+
+    // Fonctio qui vérifie si le formulaire a bien été soumis
     public function add(): void
     {
-
-        //Récupere les données du formulaire
+        // Vérifie si la méthode de requête est POST (soumission du formulaire).
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+            // Récupère et nettoie les données du formulaire.
             $userName = $this->security->cleanInput($_POST['userName']);
             $firstName = $this->security->cleanInput($_POST['firstName']);
             $birthDate = new \DateTime($_POST['birthDate']);
@@ -41,6 +44,7 @@ class UserController extends AbstractController// Responsable de la gestion des 
             $userPassword = $this->security->cleanInput($_POST['userPassword']);
             $userImage = $this->security->cleanInput($_POST['userImage']);
 
+            // Crée une nouvelle instance de l'utilisateur avec les données récupérées.
             $user = new Users($userName, $firstName, $userMail, $userProfile, $userPassword);
             $user->setBirthDate($birthDate);
             $user->setGender($gender);
@@ -77,16 +81,18 @@ class UserController extends AbstractController// Responsable de la gestion des 
                 $this->redirectToRoute("register");
             }*/
 
+            // Crée une instance de UserManager pour gérer les opérations sur les utilisateurs.
             $userManager = new UserManager();
 
+            // Insère le nouvel utilisateur dans la base de données.
             $userInserted = $userManager->insertUser($user);
 
+            // Affiche un message de succès ou d'erreur en fonction du résultat de l'insertion.
             if ($userInserted) {
-                echo "Utilisateur crée avec succès.";
+                echo "Utilisateur créé avec succès.";
             } else {
-                "Erreur lors de la création de l'utilisateur";
+                echo "Erreur lors de la création de l'utilisateur.";
             }
         }
-
     }
 }
