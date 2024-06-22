@@ -37,8 +37,8 @@ p {
     font-size: large;
 }
 
-a{
-    text-decoration: none;
+#dash-a{
+    text-decoration: none !important;
     color: black;
     font-weight: bold;
 }

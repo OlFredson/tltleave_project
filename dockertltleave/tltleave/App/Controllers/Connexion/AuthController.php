@@ -5,19 +5,22 @@ namespace App\Controllers\Connexion;
 use App\Controllers\AbstractController;
 use App\Controllers\DisplayController;
 use App\Controllers\SecurityController;
-use App\Models\Manager\UserManager;
+use App\Models\Manager\Connexion\AuthManager;
+use App\Models\Manager\User\UserManager;
 
 // Classe responsable de l'authentification (connexion, déconnexion)
 class AuthController extends AbstractController
 {
     private SecurityController $security;
     private UserManager $userManager;
+    private AuthManager $userAuth;
 
     public function __construct()
     {
         // Initialise le contrôleur de sécurité et le gestionnaire d'utilisateurs.
         $this->security = new SecurityController();
         $this->userManager = new UserManager();
+        $this->userAuth = new AuthManager();
     }
 
     /**
@@ -48,7 +51,7 @@ class AuthController extends AbstractController
             // Vérifie si les identifiants sont fournis.
             if ($idEmployee && $userPassword) {
                 // Valide le mot de passe de l'utilisateur.
-                $valid = $this->userManager->verifyPassword($idEmployee, $userPassword);
+                $valid = $this->userAuth->verifyPassword($idEmployee, $userPassword);
 
                 if ($valid) {
                     // Régénère l'ID de session après une connexion réussie pour des raisons de sécurité.
@@ -101,13 +104,15 @@ class AuthController extends AbstractController
     /**
      * Vérifie si l'utilisateur est authentifié.
      */
-    public function isAuthenticated(): bool
-    {
-        // Démarre la session si elle n'est pas déjà démarrée.
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-        // Vérifie si l'utilisateur est connecté.
-        return isset($_SESSION['user']);
+   // Vérifie si l'utilisateur est connecté
+    public function isAuthenticated() {
+        return isset($_SESSION['id_employee']);
     }
+
+// Vérifie si l'utilisateur connecté est un administrateur
+public function isAdmin() {
+    // Supposons que le rôle de l'utilisateur est stocké dans la session
+    return isset($_SESSION['user_profile']) && $_SESSION['user_profile'] === 'admin';
+}
+
 }

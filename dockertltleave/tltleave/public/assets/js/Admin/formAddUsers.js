@@ -1,9 +1,11 @@
 $(document).ready(function() {
+
     // Fonction pour restreindre la saisie de caractères dans les champs userName et firstName
     function restrictInput(event) {
         const pattern = /^[A-Za-zÀ-ÿ'-]+$/; // Pattern pour autoriser uniquement les lettres, les accents et les tirets
         const input = $(this).val(); // Récupération de la valeur du champ
-        const errorField = $(this).next('.error'); // Sélection de l'élément suivant de classe 'error' pour afficher les erreurs
+        const errorField = $(this).next('.error-message'); // Sélection de l'élément suivant de classe 'error' pour afficher les erreurs
+
         if (!pattern.test(input)) {
             $(this).val(input.replace(/[^A-Za-zÀ-ÿ'-]+/g, '')); // Remplacement des caractères invalides par une chaîne vide
             errorField.text('Merci de ne saisir que des lettres.'); // Affichage d'un message d'erreur
@@ -43,7 +45,7 @@ $(document).ready(function() {
         }
 
         // Validation du champ zipCode (code postal) et affichage d'un message d'erreur si nécessaire
-        const zipPattern = /^\d{5}$/;
+        const zipPattern = /\d{5}( |$)$/;
         if (!zipPattern.test($('#zipCode').val())) {
             isValid = false;
             $('#zipCode').addClass('invalid');
@@ -73,7 +75,7 @@ $(document).ready(function() {
         }
 
         // Validation du champ userRole et affichage d'un message d'erreur si nécessaire
-        const rolePattern = /^[A-Za-z-]+$/;
+        const rolePattern = /^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/;
         if (!rolePattern.test($('#userRole').val())) {
             isValid = false;
             $('#userRole').addClass('invalid');
@@ -88,6 +90,9 @@ $(document).ready(function() {
         }
     });
 
+    /**************************************************************************************************************/
+
+
     // Gestion du clic sur le bouton de déconnexion
     $('#logoutButton').click(function() {
         console.log("Logout button clicked");
@@ -98,4 +103,50 @@ $(document).ready(function() {
         // Redirection vers la page de connexion
         window.location.href = 'authentication';
     });
+
+    $('#userImage').change(function(e) {
+        let filePath = $(this).val(); // Chemin du fichier
+        let fileName = filePath.split(/[\\/]/).pop(); // Nom du fichier
+        let newFilePath = '/assets/images/cards/' + fileName; // Nouveau chemin du fichier
+
+        // Afficher le nouveau chemin pour vérification
+        console.log('Nouveau chemin du fichier:', newFilePath);
+
+        // Si nécessaire, mettez à jour la valeur de l'input (mais ce n'est pas recommandé car l'input file est en lecture seule pour des raisons de sécurité)
+        // $(this).val(newFilePath);
+
+        // Si vous avez besoin de ce nouveau chemin pour une autre opération, vous pouvez l'utiliser comme ci-dessus
+    });
+
+    ////     COM : Modal ajout utilisateur
+    $('#userForm').on('submit', function(event) {
+        event.preventDefault();
+
+        var formData = new FormData(this);
+
+        console.log('Envoi des données :', formData); // Diagnostic
+
+        $.ajax({
+            type: 'POST',
+            url: '/adminSubmitusers',  // Remplacez par l'URL de votre serveur de traitement
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log('Réponse réussie :', response); // Diagnostic
+                // Affiche le modal de succès
+                $('#successModal').modal('show');
+            },
+            error: function(error) {
+                console.log('Erreur :', error); // Diagnostic
+                // Gérez les erreurs ici
+                alert('Erreur lors de la création de l\'utilisateur');
+            }
+        });
+    });
+    // Vide les champs du formulaire apres fermeture du POP-UP
+    $('#successModal').on('hidden.bs.modal', function () {
+        $('#userForm')[0].reset();
+    });
 });
+

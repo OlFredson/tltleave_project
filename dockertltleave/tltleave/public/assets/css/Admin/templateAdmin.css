@@ -4,8 +4,6 @@
     font-family: Helvetica, Arial, Verdana ;
 }
 
-/* Effets*/
-
 
 body {
     background-color: rgb(174,144,99, 20%);
@@ -131,12 +129,20 @@ h1 {
 /*************************************************************************/
 
 /************************** Part of sidebar ******************************/
-
+/*
 main {
     display: flex;
     justify-content: space-around;
     width: 10vh;
 }
+*/
+main {
+    display: flex;
+    justify-content: space-around;
+    width: 99%;
+    margin: 0;
+}
+
 
 #sidebar ul {
     display: flex;
@@ -166,19 +172,21 @@ main {
 /**************************** Style part container ******************************/
 
 h2, hr {
-    margin : 0 3rem;
+    margin : 0 2.5rem;
 }
 
 hr {
     border: solid 1px rgb(174,144,99, 50%) ;
+    margin-bottom: 0.5rem;
 }
 
 #dash-container {
+    flex-grow: 1;
     background-color: #ffffff;
     padding: 20px;
     border-radius:3rem;
     margin-top: 1rem;
     margin-left: 1rem;
     box-shadow :1px 5px 10px 1px rgba(0, 0, 0, 0.25);
-    width: 300rem;
+    width: 100%;
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace src\app\Entity\Models;
+namespace App\Models\Entity;
 
 class Right {
     private int $employeeId;

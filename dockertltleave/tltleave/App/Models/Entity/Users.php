@@ -23,6 +23,7 @@ class Users
     private ?string $userImage;
     private string $userProfile;
     private ?string $userRole;
+    private string $team;
     private ?string $employmentStatus;
     private ?DateTime $hiredDate;
     private string $userPassword;
@@ -294,6 +295,23 @@ class Users
         $this->userRole = $userRole;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getTeam(): ?string
+    {
+        return $this->team;
+    }
+
+    /**
+     * @param string $team
+     */
+    public function setTeam(?string $team): void
+    {
+        $this->team = $team;
+    }
+
     /**
      * @return string
      */
@@ -341,9 +359,9 @@ class Users
     {
         $this->userPassword = password_hash($userPassword, PASSWORD_DEFAULT);
         /* Hachage du mot de passe :
-        Dans la méthode setPassword(), vous utilisez password_hash() pour hacher le mot de passe. 
-        C'est une bonne pratique pour sécuriser les mots de passe. Cependant, 
-        assurez-vous que lors de la vérification du mot de passe (par exemple, lors de la connexion de l'utilisateur), 
+        Dans la méthode setPassword(), vous utilisez password_hash() pour hacher le mot de passe.
+        C'est une bonne pratique pour sécuriser les mots de passe. Cependant,
+        assurez-vous que lors de la vérification du mot de passe (par exemple, lors de la connexion de l'utilisateur),
         vous utilisez password_verify() pour comparer le mot de passe haché avec le mot de passe fourni.*/
     }
 

@@ -3,22 +3,28 @@
 namespace App\Controllers\User;
 
 use App\Controllers\AbstractController;
+use App\Controllers\Admin\AdminController;
 use App\Controllers\SecurityController;
 use App\Models\Entity\Users;
-use App\Models\Manager\UserManager;
+use App\Models\Manager\User\UserManager;
 
 // Classe responsable de la gestion des utilisateurs (création, mise à jour, suppression)
 class UserController extends AbstractController
 {
+    /**
+     *
+     */
     private SecurityController $security;
+    private UserManager $userManager;
 
     public function __construct()
     {
         // Initialise le contrôleur de sécurité pour gérer la sécurité des entrées utilisateur.
         $this->security = new SecurityController();
+        $this->userManager = new UserManager();
     }
 
-    // Fonctio qui vérifie si le formulaire a bien été soumis
+    // Fonction qui vérifie si le formulaire a bien été soumis
     public function add(): void
     {
         // Vérifie si la méthode de requête est POST (soumission du formulaire).
@@ -39,6 +45,7 @@ class UserController extends AbstractController
             $userMail = $this->security->cleanInput($_POST['userMail']);
             $userProfile = $this->security->cleanInput($_POST['userProfile']);
             $userRole = $this->security->cleanInput($_POST['userRole']);
+            $team = $this->security->cleanInput($_POST['team']);
             $employmentStatus = $this->security->cleanInput($_POST['employmentStatus']);
             $hiredDate = new \DateTime($_POST['hiredDate']);
             $userPassword = $this->security->cleanInput($_POST['userPassword']);
@@ -56,6 +63,7 @@ class UserController extends AbstractController
             $user->setCountry($country);
             $user->setPhone($phone);
             $user->setUserRole($userRole);
+            $user->setTeam($team);
             $user->setEmploymentStatus($employmentStatus);
             $user->setHiredDate($hiredDate);
             $user->setUserImage($userImage);
@@ -89,10 +97,49 @@ class UserController extends AbstractController
 
             // Affiche un message de succès ou d'erreur en fonction du résultat de l'insertion.
             if ($userInserted) {
-                echo "Utilisateur créé avec succès.";
+                $userCreate = new AdminController();
+                $userCreate->addUsers();
             } else {
                 echo "Erreur lors de la création de l'utilisateur.";
             }
         }
     }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $idEmployee = intval($_POST['idEmployee']);
+            $userDeleted = $this->userManager->removeUser($idEmployee);
+
+            if ($userDeleted) {
+                $userSupp = new AdminController();
+                $userSupp->deleteUser();
+            } else {
+                echo "Erreur lors de la suppression de l'utilisateur.";
+            }
+            } else {
+                echo "Requête invalide.";
+        }
+    }
+
+    /*
+    public function getProfileImagePath($idEmployee) {
+        $imageName = $this->userManager->getImageNameByUserId($idEmployee);
+
+        if ($imageName) {
+            return "assets/images/photoprofil/" . htmlspecialchars($imageName);
+        } else {
+            return "assets/images/photoprofil/default.jpg"; // Chemin par défaut si aucune image n'est trouvée
+        }
+    }
+
+    public function getUsersWithProfileImagePaths() {
+        $users = $this->userManager->getAllUsers(); // Assume this method returns an array of users
+        foreach ($users as &$user) {
+            $user['profile_image_path'] = $this->getProfileImagePath($user['id_employee']);
+        }
+        return $users;
+    }*/
+
+
 }

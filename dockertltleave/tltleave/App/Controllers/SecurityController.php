@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-class SecurityController
-{
+class SecurityController {
+
     /**
      * Nettoie les données en supprimant les espaces et en convertissant les caractères spéciaux en entités HTML.
      * @param mixed $data Les données à nettoyer.
      * @return false|string Les données nettoyées ou false si les données sont vides ou non définies.
      */
-    public function cleanInput($data): false|string
-    {
+    public function cleanInput($data): false|string {
+
         // Vérifie si les données sont définies et non vides.
         if (!isset($data) || empty($data)){
             return false;

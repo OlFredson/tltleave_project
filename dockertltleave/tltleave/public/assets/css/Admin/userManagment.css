@@ -6,36 +6,44 @@
 }
 #btn-add {
     display: flex;
-    justify-content: flex-end;
-    margin-right: 4rem;
-}
-#btn-add button {
-    width: 15rem;
-    height: 3rem;
-    margin-left: 2rem;
-    border-radius: 5rem;
-    font-size: large;
-    border: none;
+    justify-content: end;
 }
 
-#btn-add button:first-of-type {
+.btn-add-user {
+    height: 2.5rem;
     background-color: #F8B550;
+    margin-top: 0.3rem;
+    margin-right: 2.5rem;
+    padding: 0.3rem;
+    border-radius: 20px;
+    border: none;
     box-shadow :0px 5px 5px 1px rgba(85, 85, 85, 0.25);
 }
 
-#btn-add button:nth-child(2) {
-    background-color: rgb(174,144,99, 70%);
-    box-shadow :0px 5px 5px 1px rgba(85, 85, 85, 0.25);
+.a-add-user {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+/* Effets*/
+.btn-add-user:hover{
+    scale: 1.1;
 }
 
 /*********************** Style search - sort - display **************/
+
+hr {
+    margin-top: 1rem;
+}
 
 #search-sort-display {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 1rem;
-    height: 2rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+    height: 3rem;
     background-color: rgb(174,144,99, 10%);
     border-radius: 1rem;
 }
@@ -95,11 +103,12 @@
 
 .grid-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* 4 colonnes */
     gap: 2rem;
     width: 100%;
     max-width: 120rem;
     margin-top: 2rem;
+    margin-left: 2rem;
 }
 
 .grid-item-management {
@@ -121,6 +130,7 @@
     box-shadow: 1px 5px 10px 1px rgba(0, 0, 0, 0.25);
     margin-bottom: 1rem;
     list-style-type: none;
+    object-fit: cover;
 }
 
 .photo {
@@ -129,21 +139,29 @@
     align-items: center;
 }
 
-h3 {
+.user-name {
     margin-bottom: 0px;
-    font-size: x-small;
+    font-size: medium;
+    font-weight: 600;
 }
 
 p {
     font-size: small;
     margin-bottom: 0px;
 }
-.bi-pencil-fill {
+.bi-trash3 {
     align-self: end;
     margin-bottom: 1rem;
     margin-right: 1rem;
     font-size: larger;
+    color: #c10a0a;
+}
+
+.bi-pencil-fill {
+
+    font-size: larger;
     color: #F8B550;
+    text-align: center;
 }
 
 .photo p:nth-of-type(2) {
@@ -151,8 +169,12 @@ p {
     border-radius: 1rem;
     height: 1.5rem;
     width: 12rem;
+    text-align: center;
 }
 
+.user-mail {
+    color: rgb(59, 146, 234);
+}
 .position {
     text-align: center;
     align-content: center;

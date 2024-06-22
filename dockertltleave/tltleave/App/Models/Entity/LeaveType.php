@@ -1,6 +1,6 @@
 <?php
 
-namespace src\app\Entity\Models;
+namespace App\Models\Entity;
 
 class LeaveType {
     private int $leaveTypeId;
@@ -32,7 +32,7 @@ class LeaveType {
     }
 
     /**
-     * @return string 
+     * @return string
      */
     public function getLeaveTypeName() : string {
         return $this->leaveTypeName;

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 class AbstractController {
+
     /**
      * Affiche une vue avec des données passées en paramètre.
      * Le choix du template dépend du préfixe du nom de la vue.
@@ -22,11 +23,11 @@ class AbstractController {
         $content = ob_get_clean();
         // Choix du template en fonction du préfixe du nom de la vue.
         if (strpos($viewName, "Admin/") === 0) {
-            include VIEWS_PATH . "templateAdmin.view.php";
+            include VIEWS_PATH . "Admin/templateAdmin.view.php";
         } elseif (strpos($viewName, "Connexion/") === 0) {
-            include VIEWS_PATH . "templateConnexion.view.php";
+            include VIEWS_PATH . "Connexion/templateConnexion.view.php";
         } else {
-            include VIEWS_PATH . "templateEmployee.view.php";
+            include VIEWS_PATH . "Employee/templateEmployee.view.php";
         }
     }
 

@@ -6,7 +6,7 @@
         <h1>Authentification</h1>
         <p>Veuillez saisir votre Matricule et mot de passe</p>
 
-        <!-- 
+        <!--
         <input type="text" id="idEmployee" class="form-container" name="idEmployee" placeholder="Matricule" />
         <label for="idEmployee"></label>
         -->

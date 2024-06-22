@@ -1,0 +1,30 @@
+/************************************ Style for leave Requests ******************************************/
+@keyframes pulsation {
+    0% {
+    box-shadow: #007bff00 1px 1px 1px 1px;
+    }
+    100% {
+    box-shadow: rgba(0, 81, 255, 0.5) 0px 0px 4px 4px;
+    }
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus,
+select:focus {
+    animation: pulsation 1.5s steps(50);
+    transform: scale(1.025);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #333333;
+    font-weight: bold;
+}
+
+.btn-leave-requests {
+    border-radius: 50px;
+}

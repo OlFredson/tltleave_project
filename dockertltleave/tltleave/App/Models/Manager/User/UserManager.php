@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Manager;
+namespace App\Models\Manager\User;
 
 use App\Models\Entity\Users;
 use Exception;
@@ -18,7 +18,7 @@ class UserManager
     {
         try {
             // Initialisation de l'instance PDO pour la connexion à la base de données.
-            $this->db = new PDO("mysql:host=192.168.1.102;dbname=tltleavedb;charset=utf8;port=3307", "tlt_user", "tlt_password");
+            $this->db = new PDO("mysql:host=172.24.176.1;dbname=tltleavedb;charset=utf8;port=3307", "tlt_user", "tlt_password");
         } catch (Exception $exception) {
             // Gestion de l'exception en affichant un message d'erreur.
             echo ('<br>Erreur de connexion : ' . $exception->getMessage() . '<br>');
@@ -26,7 +26,7 @@ class UserManager
     }
 
     /**
-     * Insère un nouvel utilisateur dans la base de données.
+     *  CREATE : Insertion d'un User dans la base de données.
      *
      * @param Users $user L'entité utilisateur à insérer.
      * @return bool Retourne vrai si l'utilisateur a été inséré avec succès,  sinon faux.
@@ -36,7 +36,7 @@ class UserManager
         $addUser = false;
         try {
             // Prépare l'instruction SQL pour insérer un nouvel utilisateur.
-            $stmt = $this->db->prepare("INSERT INTO users (user_name, firstname, birth_date, gender, situation, child, user_address, zip_code, city, country, phone, user_mail, user_image, user_profile, user_role, employement_status, hired_date, user_password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $this->db->prepare("INSERT INTO users (user_name, firstname, birth_date, gender, situation, child, user_address, zip_code, city, country, phone, user_mail, user_image, user_profile, user_role, team,employement_status, hired_date, user_password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             // Exécute l'instruction avec les détails de l'utilisateur.
             $addUser = $stmt->execute([
                 $user->getUserName(),
@@ -54,6 +54,7 @@ class UserManager
                 $user->getUserImage(),
                 $user->getUserProfile(),
                 $user->getUserRole(),
+                $user->getTeam(),
                 $user->getEmploymentStatus(),
                 $user->getHiredDate() ? $user->getHiredDate()->format('Y-m-d') : null,
                 $user->getUserPassword()
@@ -65,38 +66,9 @@ class UserManager
         return $addUser;
     }
 
-    /**
-     * Vérifie le mot de passe de l'utilisateur.
-     *
-     * @param string $idEmployee L'ID de l'employé.
-     * @param string $userPassword Le mot de passe de l'utilisateur.
-     * @return bool Retourne vrai si le mot de passe est correct, faux sinon.
-     */
-    public function verifyPassword(string $idEmployee, string $userPassword): bool
-    {
-        try {
-            // Prépare l'instruction SQL pour récupérer le mot de passe de l'utilisateur par ID employé.
-            $stmt = $this->db->prepare('SELECT user_password FROM users WHERE id_employee = ?');
-            // Exécute l'instruction avec l'ID de l'employé.
-            $stmt->execute(['id_employee' => $idEmployee]);
-            // Récupère le résultat sous forme de tableau associatif.
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            var_dump($result); // Ajout de var_dump pour voir le résultat
-            if ($result) {
-                // Vérifie le mot de passe.
-                return password_verify($userPassword, $result['user_password']);
-            } else {
-                return false;
-            }
-        } catch (Exception $e) {
-            // Affiche un message d'erreur en cas de problème lors de la vérification du mot de passe.
-            echo "Erreur lors de la vérification du mot de passe : " . $e->getMessage();
-            return false;
-        }
-    }
 
     /**
-     * Récupère un utilisateur par son ID employé.
+     *  READ : Récupération d'un User par son ID.
      *
      * @param string $idEmployee L'ID de l'employé.
      * @return mixed Les détails de l'utilisateur ou false si non trouvé.
@@ -104,7 +76,7 @@ class UserManager
     public function getUserByIdEmployee(string $idEmployee): mixed
     {
         // Prépare l'instruction SQL pour récupérer un utilisateur par ID employé.
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE id_employee=?");
+        $stmt = $this->db->prepare('SELECT * FROM users WHERE id_employee=?');
         // Exécute l'instruction avec l'ID de l'employé.
         $stmt->execute(["id_employee" => $idEmployee]);
         // Récupère et retourne le résultat.
@@ -113,7 +85,7 @@ class UserManager
     }
 
     /**
-     * Récupère un utilisateur par son rôle.
+     *  READ : Récupèration d'un User par son profil (admin ou employee).
      *
      * @param string $userProfile Le profil utilisateur.
      * @return mixed Les détails de l'utilisateur ou false si non trouvé.
@@ -130,7 +102,7 @@ class UserManager
     }
 
     /**
-     * Récupère tous les utilisateurs.
+     *  READ : Récupèration tous les Users via un tableau associatif
      *
      * @return array Un tableau associatif contenant tous les utilisateurs.
      */
@@ -143,4 +115,48 @@ class UserManager
         // Récupère et retourne tous les résultats.
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * UPDATE : Modification de propriétés d'un User
+     *
+     *
+     *
+     */
+
+    public function updateUser () {
+
+    }
+
+    /**
+     *  DELETE : Suppression d'un User
+     *
+     *@param int $idEmployee
+     *@return bool
+     */
+
+    public function removeUser(int $idEmployee): bool
+    {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM users WHERE id_employee = ?");
+            return $stmt->execute([$idEmployee]);
+        } catch (Exception $exception) {
+            echo ($exception->getMessage());
+            return false;
+        }
+    }
+
+    /**
+     *  READ : Récupération de la photo de profil
+     *
+     */
+
+    /*
+    public function getImageNameByUserId($idEmployee) {
+        $stmt = $this->db->prepare("SELECT imageName FROM users WHERE id = :id");
+        $stmt->bindParam(':id', $idEmployee, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return $row ? $row["imageName"] : null;
+    }*/
 }

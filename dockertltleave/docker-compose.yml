@@ -47,7 +47,6 @@ services:
 
 volumes:
   mysql:
-  
 
 networks:
   tltleave_network:

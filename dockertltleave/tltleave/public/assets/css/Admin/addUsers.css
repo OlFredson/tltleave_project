@@ -1,15 +1,28 @@
-.error {
+.error-message,
+.valid-message{
+    display: none;
     color: red;
-    font-size: 0.9em;
-}
-.invalid {
-    border-color: red;
+    font-size: 0.8em;
 }
 
+input:invalid + .error-message {
+    display: block;
+    color: red;
+}
+
+input:valid + .valid-message {
+    display: block;
+    color: rgb(52, 154, 15);
+}
 
 
 /* BOuton sidebar actif */
 
 .circle:nth-child(2) {
     background-color: #F8B550;
+}
+
+article {
+    margin-left: 3rem;
+    margin-right: 3rem;
 }

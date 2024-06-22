@@ -1,11 +1,11 @@
-            <h2>Dashboard</h2>
+                <h2>Dashboard</h2>
             <hr>
             <section class="grid-container">
                 <article class="grid-item user-mgmt">
                     <h3 id="h3dashboard">Gestion des utlisateurs</h3>
                     <div class="grid-users-container">
-                        <h4 class="grid-admin" id="h4dashboard"><a href="">Administrateurs</a></h4>
-                        <h4 class="grid-employee" id="h4dashboard"><a href="">Collaborateurs</a></h4>
+                        <h4 class="grid-admin" id="h4dashboard"><a href="" id="dash-a">Administrateurs</a></h4>
+                        <h4 class="grid-employee" id="h4dashboard"><a href="" id="dash-a">Collaborateurs</a></h4>
                         <div class="grid-user1 circle-dashboard">
                             <div class="circle-user"></div>
                             <div class="user-dash">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <p class="grid-add">Ajouter Admins</p>
-                        <a href="<?=URL?>addusers"><i class="bi bi-plus-lg grid-plus"></i></a>
+                        <a href="<?=URL?>adminAddusers"><i class="bi bi-plus-lg grid-plus"></i></a>
                     </div>
 
                 </article>

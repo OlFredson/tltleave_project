@@ -1,6 +1,6 @@
 <?php
 
-namespace src\app\Entity\Models;
+namespace App\Models\Entity;
 
 class Own {
     private int $employeeId;
@@ -9,7 +9,7 @@ class Own {
     public function __construct (
         int $employeeId,
         int $rightId
-    ){ 
+    ){
         $this->setEmployeeId($employeeId);
         $this->setRightId($rightId);
     }

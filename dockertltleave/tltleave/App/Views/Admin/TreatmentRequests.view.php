@@ -22,7 +22,7 @@
                 </div>
             </article>
             <!------------------------------------------------------------------------------------- Part search - End ------------------------------------------------------------------------------->
-            
+
             <!------------------------------------------------------------------------------ Part table Treatment Requests - Start ------------------------------------------------------------------->
             <article class="treatment-container">
                 <div class="tabs-container">
@@ -48,15 +48,15 @@
                         </thead>
                         <tbody>
                             <tr>
-                            <th scope="row">1</th>
-                            <td>Mark lowe</td>
-                            <td>2024-04-23</td>
-                            <td>En attente</td>
-                            <td><img src="\assets\images\cards\zinedine-zidane-1.jpg" alt="" width="50vw"></td>
-                            <td>2024-05-03</td>
-                            <td>2024-05-11</td>
-                            <td>7</td>
-                            <td>Congés payés</td>
+                            <th scope="row"></th>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><img src="" alt="" width="50vw"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
                                 <a href=""><i class="bi bi-check2"></i></a>
                                 <a href=""><i class="bi bi-x-lg"></i></a>
