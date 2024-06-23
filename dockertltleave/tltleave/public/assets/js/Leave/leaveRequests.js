@@ -1,19 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
     function calculateDays() {
-        let beginDate = new Date(document.getElementById('beginDate').value);
-        let endDate = new Date(document.getElementById('endDate').value);
+        let beginDate = new Date($('#beginDate').val());
+        let endDate = new Date($('#endDate').val());
 
         // Assurez-vous que beginDate est toujours avant endDate
         if (beginDate > endDate) {
             alert("La date de début doit être antérieure à la date de fin.");
-            document.getElementById('nbrDays').value = 0;
+            $('#nbrDays').val(0);
             return;
         }
 
         let diffDays = 0;
         let currentDate = new Date(beginDate);
 
-        // Itérer sur chaque jour entre les deux dates
+        // Itération sur chaque jour entre les deux dates
         while (currentDate <= endDate) {
             let dayOfWeek = currentDate.getDay();
             // Exclure les dimanches (0) et samedis (6)
@@ -25,10 +25,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Mettre à jour le champ Nombre de jours
-        document.getElementById('nbrDays').value = diffDays;
+        $('#nbrDays').val(diffDays);
     }
 
-    // Ajouter un écouteur d'événement pour détecter les changements de dates
-    document.getElementById('beginDate').addEventListener('change', calculateDays);
-    document.getElementById('endDate').addEventListener('change', calculateDays);
+    // Ajoute un écouteur d'événement pour détecter les changements de dates
+    $('#beginDate').on('change', calculateDays);
+    $('#endDate').on('change', calculateDays);
+
+    // Soumission du formulaire et affichage du modal via Ajax
+    $('#leaveForm').on('submit', function(event) {
+        event.preventDefault();
+
+        let formData = new FormData(this);
+
+        $.ajax({
+            type: 'POST',
+            url: '/submit-leave',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                // Affiche le modal de succès
+                $('#success').modal('show');
+            },
+            error: function(error) {
+                alert('Erreur lors de la création de demande de congés');
+            }
+        });
+    });
+
+    // Vide les champs du formulaire après fermeture du modal
+    $('#success').on('hidden.bs.modal', function () {
+        $('#leaveForm')[0].reset();
+        $('#nbrDays').val(0);
+    });
 });

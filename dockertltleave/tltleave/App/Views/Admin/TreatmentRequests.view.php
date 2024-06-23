@@ -24,13 +24,14 @@
             <!------------------------------------------------------------------------------------- Part search - End ------------------------------------------------------------------------------->
 
             <!------------------------------------------------------------------------------ Part table Treatment Requests - Start ------------------------------------------------------------------->
+            <hr class="hr-treatment">
             <article class="treatment-container">
                 <div class="tabs-container">
                     <button class="tab-btn active" type="button"><a href="#">Toutes les demandes</a></button>
                     <button class="tab-btn"><a href="#">Demandes en attente de validation</a></button>
                     <button class="tab-btn"><a href="#">Demandes Validées</a></button>
                     <button class="tab-btn"><a href="#">Demandes Refusées</a></button>
-                    <hr class="hr-treatment">
+
                     <table class="table">
                         <thead>
                             <tr>

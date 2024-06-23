@@ -1,27 +1,65 @@
 <?php
 
-namespace App\Controllers\User;
+namespace App\Controllers\Admin\UserManagement;
 
-use App\Controllers\AbstractController;
-use App\Controllers\Admin\AdminController;
-use App\Controllers\SecurityController;
+use App\Controllers\Common\AbstractController;
+use App\Controllers\Common\SecurityController;
 use App\Models\Entity\Users;
-use App\Models\Manager\User\UserManager;
+use App\Models\Manager\Admin\UserManagement\AdminUserManagementManager;
+use App\Models\Manager\Common\TeamManager;
 
 // Classe responsable de la gestion des utilisateurs (création, mise à jour, suppression)
-class UserController extends AbstractController
-{
+class AdminUserManagementController extends AbstractController {
+
     /**
      *
      */
     private SecurityController $security;
-    private UserManager $userManager;
+    private AdminUserManagementManager $userManager;
+    private TeamManager $teamManager;
 
     public function __construct()
     {
         // Initialise le contrôleur de sécurité pour gérer la sécurité des entrées utilisateur.
         $this->security = new SecurityController();
-        $this->userManager = new UserManager();
+        $this->userManager = new AdminUserManagementManager();
+        $this->teamManager = new TeamManager();
+    }
+
+        /**
+     * Affiche la gestion des utilisateurs.
+     */
+    public function userManagement(): void
+    {
+        $title = "Gestion des utilisateurs";
+        // Crée une instance de UserManager pour récupérer tous les utilisateurs.
+        $userManager = new AdminUserManagementManager();
+        $users = $userManager->getAllUsers();
+        $token = $this->security->generateCsrfToken();
+        // Rendu de la vue de gestion des utilisateurs avec le titre et la liste des utilisateurs.
+        $this->render('Admin/UserManagement.view', [
+            'title' => $title,
+            'users' => $users,
+            'csrf_token' => $token
+        ]);
+    }
+
+    /**
+     * Affiche la page d'ajout des utilisateurs.
+     * Génére un token CSRF pour sécuriser le formulaire.
+     */
+    public function addUsers(): void
+    {
+        $title = "Ajout utilisateurs";
+        // Génère un token CSRF pour sécuriser le formulaire.
+        $token = $this->security->generateCsrfToken();
+        // Rendu de la vue d'ajout des utilisateurs avec le titre et le token CSRF.
+        $teams = $this->teamManager->getAllTeamNames();
+        $this->render("Admin/AddUsers.view", [
+            'title' => $title,
+            'csrf_token' => $token,
+            'teams' => $teams
+        ]);
     }
 
     // Fonction qui vérifie si le formulaire a bien été soumis
@@ -90,15 +128,14 @@ class UserController extends AbstractController
             }*/
 
             // Crée une instance de UserManager pour gérer les opérations sur les utilisateurs.
-            $userManager = new UserManager();
+            $userManager = new AdminUserManagementManager();
 
             // Insère le nouvel utilisateur dans la base de données.
             $userInserted = $userManager->insertUser($user);
 
             // Affiche un message de succès ou d'erreur en fonction du résultat de l'insertion.
             if ($userInserted) {
-                $userCreate = new AdminController();
-                $userCreate->addUsers();
+                $this->addUsers();
             } else {
                 echo "Erreur lors de la création de l'utilisateur.";
             }
@@ -112,8 +149,7 @@ class UserController extends AbstractController
             $userDeleted = $this->userManager->removeUser($idEmployee);
 
             if ($userDeleted) {
-                $userSupp = new AdminController();
-                $userSupp->deleteUser();
+                $this->userManagement();
             } else {
                 echo "Erreur lors de la suppression de l'utilisateur.";
             }
@@ -122,24 +158,6 @@ class UserController extends AbstractController
         }
     }
 
-    /*
-    public function getProfileImagePath($idEmployee) {
-        $imageName = $this->userManager->getImageNameByUserId($idEmployee);
-
-        if ($imageName) {
-            return "assets/images/photoprofil/" . htmlspecialchars($imageName);
-        } else {
-            return "assets/images/photoprofil/default.jpg"; // Chemin par défaut si aucune image n'est trouvée
-        }
-    }
-
-    public function getUsersWithProfileImagePaths() {
-        $users = $this->userManager->getAllUsers(); // Assume this method returns an array of users
-        foreach ($users as &$user) {
-            $user['profile_image_path'] = $this->getProfileImagePath($user['id_employee']);
-        }
-        return $users;
-    }*/
 
 
 }

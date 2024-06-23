@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Manager\Leave;
+namespace App\Models\Manager\Common;
 
 use App\Core\Database;
 use PDO;

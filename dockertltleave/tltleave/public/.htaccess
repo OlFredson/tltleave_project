@@ -10,3 +10,9 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?page=$1  [QSA,L]
 #Redirige toutes les requetes vers index.php et passe la partie de l'URL demandée en tant que parametre de requete GET
 #Ex : www.tltleave.fr/public/index.php?page=dashboard avec la regle de réécriture nous aurons www.tltleave.fr/dashboard
+
+RewriteRule ^admin/(.*)$ index.php?page=admin/$1 [QSA,L]
+# Pour les requêtes commençant par 'admin'
+
+RewriteRule ^connexion/(.*)$ index.php?page=connexion/$1 [QSA,L]
+# Pour les requêtes commençant par 'connexion'

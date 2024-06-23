@@ -1,4 +1,4 @@
-$(document).ready(function() {
+/*$(document).ready(function() {
     ////     COM : Modal ajout Demande de congés
     $('#leaveForm').on('submit', function(event) {
         event.preventDefault();

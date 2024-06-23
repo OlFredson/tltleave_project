@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Models\Manager\User;
+namespace App\Models\Manager\Admin\UserManagement;
 
 use App\Models\Entity\Users;
 use Exception;
 use PDO;
 
-class UserManager
-{
+class AdminUserManagementManager {
+
     private PDO $db;
 
     /**

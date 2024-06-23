@@ -46,6 +46,18 @@ $employeeStatus = new EmployeeHistoricStatusController();
 $employeeLeave = new EmployeeLeaveRequestsController();
 
 
+// Démarrer la session
+session_start();
+
+// Vérifier si l'utilisateur est authentifié
+if (isset($_SESSION['user'])) {
+    // Récupérer le rôle de l'utilisateur depuis la session
+    $role = $_SESSION['user_profile']['Administrator']; // Supposons que 'role' soit une clé dans votre tableau de session
+} else {
+    // Rediriger vers la page de connexion si l'utilisateur n'est pas authentifié
+    header('Location: login.php');
+    exit;
+}
 
 try {
     // Gérer les demandes de pages
@@ -71,37 +83,37 @@ try {
             case 'connexionOk':
                 $usersAuth->authValidation();
                 break;
-            case "dashboard":
+            case "adminDashboard":
                 $adminDash->dashboard();
                 break;
-            case "user-management":
+            case "adminUsermanagement":
                 $adminMgmt->userManagement();
                 break;
-            case "submit-users":
+            case 'adminSubmitusers':
                 $adminMgmt->add();
                 break;
-            case "add-users":
+            case "adminAddusers":
                 $adminMgmt->addUsers();
                 break;
             case "userDelete":
                 $adminMgmt->delete();
                 break;
-            case "leave-requests":
+            case "adminLeaverequests":
                 $adminLeave->adminLeaveRequests();
                 break;
-            case "submit-leave":
+            case "adminSubmitleave":
                 $adminLeave->addRequests();
                 break;
-            case "status-requests":
+            case "adminStatusrequests":
                 $adminStatus->adminStatusRequests();
                 break;
-            case "treatment-requests":
+            case "adminTreatmentrequests":
                 $adminTreatment->treatmentRequests();
                 break;
-            case "statistics":
+            case "adminStatistics":
                 $adminStatistic->statistics();
                 break;
-            case "calendar":
+            case "adminCalendar":
                 $adminCalendar->calendar();
                 break;
             case "employee-dashboard":

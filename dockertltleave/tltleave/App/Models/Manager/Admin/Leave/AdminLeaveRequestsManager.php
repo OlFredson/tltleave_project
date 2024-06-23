@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Models\Manager\Leave;
+namespace App\Models\Manager\Admin\Leave;
 
 use App\Models\Entity\Leave;
 use Exception;
 use PDO;
 
-class LeaveManager {
+class AdminLeaveRequestsManager {
 
     private PDO $db;
-
 
     public function __construct()
     {
@@ -36,9 +35,7 @@ class LeaveManager {
             $addLeaves = $stmt->execute([
                 $leave->getLeaveType(),
                 $leave->getBeginDate() ? $leave->getBeGinDate()->format('Y-m-d') : null,
-                /*$leave->getBeginTime(),*/
                 $leave->getEndDate() ? $leave->getEndDate()->format('Y-m-d') : null,
-                /*$leave->getEndTime(),*/
                 $leave->getNbrDays(),
                 $leave->getCommentary()
 

@@ -14,6 +14,4 @@
     <section>
     <?=$content ?>
     </section>
-
-
 </html>

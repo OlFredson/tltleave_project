@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Controllers\Leave;
+namespace App\Controllers\Admin\Leave;
 
-use App\Controllers\AbstractController;
-use App\Controllers\Admin\AdminController;
-use App\Controllers\SecurityController;
+use App\Controllers\Common\AbstractController;
+use App\Controllers\Common\SecurityController;
 use App\Models\Entity\Leave;
-use App\Models\Manager\Leave\LeaveManager;
-use App\Models\Manager\Leave\LeaveTypeManager;
+use App\Models\Manager\Admin\Leave\AdminLeaveRequestsManager;
+use App\Models\Manager\Common\LeaveTypeManager;
 
-class LeaveRequestsController extends AbstractController {
+class AdminLeaveRequestsController extends AbstractController {
 
     private LeaveTypeManager $leaveTypeManager;
     private SecurityController $security;
@@ -19,14 +18,6 @@ class LeaveRequestsController extends AbstractController {
         // Initialise le contrôleur de sécurité pour gérer la sécurité des entrées utilisateur.
         $this->security = new SecurityController();
 
-    }
-
-    // Fonction qui affiche la  page Demande de congés
-    public function leaveRequests() :void {
-        $title='Demande de congés';
-        $this->render("Employee/LeaveRequests.view", [
-            'title'=>$title
-        ]);
     }
 
     public function adminLeaveRequests() :void {
@@ -39,6 +30,22 @@ class LeaveRequestsController extends AbstractController {
             'leaveTypes' => $leaveTypes
         ]);
     }
+
+    /**
+     * Affiche la page d'ajout des utilisateurs.
+     * Génére un token CSRF pour sécuriser le formulaire.
+     *//*
+    public function addLeave(): void
+    {
+        $title = "Demande de congés";
+        // Génère un token CSRF pour sécuriser le formulaire.
+        $token = $this->security->generateCsrfToken();
+        // Rendu de la vue d'ajout des utilisateurs avec le titre et le token CSRF.
+        $this->render("Admin/AdminLeaveRequests.view", [
+            'title' => $title,
+            'csrf_token' => $token
+        ]);
+    }*/
 
     public function addRequests () :void {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -54,7 +61,7 @@ class LeaveRequestsController extends AbstractController {
             $leave = new Leave($leaveType,$beginDate,$endDate,$nbrDays);
             $leave->setCommentary($commentary);
 
-            $leaveManager = new LeaveManager();
+            $leaveManager = new AdminLeaveRequestsManager();
 
             // Insère le nouvel utilisateur dans la base de données.
             $leaveInserted = $leaveManager->createLeave($leave);
@@ -63,7 +70,7 @@ class LeaveRequestsController extends AbstractController {
             if ($leaveInserted) {
                 $this->adminLeaveRequests();
             } else {
-                echo "Erreur lors de la création de l'utilisateur.";
+                echo "Erreur lors de la création de demande de congés.";
             }
         }
     }

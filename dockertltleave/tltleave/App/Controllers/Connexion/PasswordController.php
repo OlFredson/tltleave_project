@@ -2,10 +2,10 @@
 
 namespace App\Controllers\Connexion;
 
-use App\Controllers\AbstractController;
+use App\Controllers\Common\AbstractController;
 
-class PasswordController extends AbstractController
-{
+class PasswordController extends AbstractController {
+
     /**
      * Affiche la page de demande de réinitialisation du mot de passe.
      */

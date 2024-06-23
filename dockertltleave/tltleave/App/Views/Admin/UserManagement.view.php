@@ -1,7 +1,7 @@
 <!------------------------------------------------------------------------------------- Part search et Create User  ------------------------------------------------------------------------------->
 <h2>Gestion des utilisateurs</h2>
 <article id="btn-add">
-    <button type="button" class="btn-add-user" ><a href="<?=URL?>adminAddusers" class="a-add-user">Ajouter nouvel Utilisateur</a></button>
+    <button type="button" class="btn-add-user" ><a href="<?=URL?>add-users" class="a-add-user">Ajouter nouvel Utilisateur</a></button>
 </article>
 <hr>
 <article id="search-sort-display">

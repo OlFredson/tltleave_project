@@ -122,13 +122,13 @@ $(document).ready(function() {
     $('#userForm').on('submit', function(event) {
         event.preventDefault();
 
-        var formData = new FormData(this);
+        let formData = new FormData(this);
 
         console.log('Envoi des données :', formData); // Diagnostic
 
         $.ajax({
             type: 'POST',
-            url: '/adminSubmitusers',  // Remplacez par l'URL de votre serveur de traitement
+            url: '/submit-users',  // Remplacez par l'URL de votre serveur de traitement
             data: formData,
             contentType: false,
             processData: false,

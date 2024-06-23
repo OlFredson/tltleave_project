@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Common;
 
-class DisplayController
-{
+class DisplayController {
+
     // Définition des constantes pour les types d'alerte
     const ROUGE = 'danger';
     const ORANGE = 'warning';

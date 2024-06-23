@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <p class="grid-add">Ajouter Admins</p>
-                        <a href="<?=URL?>adminAddusers"><i class="bi bi-plus-lg grid-plus"></i></a>
+                        <a href="<?=URL?>add-users"><i class="bi bi-plus-lg grid-plus"></i></a>
                     </div>
 
                 </article>

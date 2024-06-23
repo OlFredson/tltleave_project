@@ -1,4 +1,4 @@
-<form action="/connexionOk" method="POST">
+<form action="/login-Ok" method="POST">
     <article class="group-container">
         <figure>
             <img src="\assets\images\logo1.png" alt="Logo de l'application" width="150rem">
@@ -11,8 +11,8 @@
         <label for="idEmployee"></label>
         -->
 
-        <input type="number" id="" class="form-container" name="idEmployee" placeholder="Matricule" />
-        <label for="idEmployee"></label>
+        <input type="text" id="" class="form-container" name="userName" placeholder="User Name" />
+        <label for="userName"></label>
 
         <input type="password" id="userPassword" class="form-container" name="userPassword" placeholder="Password" />
         <label for="userPassword"></label>

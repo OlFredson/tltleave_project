@@ -1,5 +1,5 @@
 <?php
-namespace App\Models\Manager\Team;
+namespace App\Models\Manager\Common;
 
 use App\Core\Database;
 use PDO;

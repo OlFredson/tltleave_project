@@ -4,7 +4,7 @@
 
 <hr>
 <section class="form-container">
-    <form action="/adminSubmitusers" method="POST" id="userForm">
+    <form action="/submit-users" method="POST" id="userForm">
         <article class="mb-3">
             <label for="userName" class="form-label">Nom:</label>
             <input type="text" name="userName" class="form-control" id="userName" placeholder="Nom"

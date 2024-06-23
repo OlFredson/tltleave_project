@@ -54,13 +54,13 @@
     <main>
         <section id="sidebar">
             <ul>
-                <li><a href="<?= URL ?>adminDashboard"><img src="assets/images/icons/Admin/dashboard.svg"alt="logo dashboard" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminUsermanagement"><img src="assets/images/icons/admin/userManagement.svg"alt="logo gestion des utilisateurs" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminLeaverequests"><img src="\assets\images\icons\Employee\demande_conges.svg" alt="logo gestion des utilisateurs" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminStatusrequests"><img src="\assets\images\icons\Employee\Traitement des demandes.svg" alt="logo traitement des demandes" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminTreatmentrequests"><img src="assets/images/icons/admin/treatmentRequests.svg"alt="logo traitement des demandes" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminStatistics"><img src="assets/images/icons/admin/statistics.svg"alt="logo statistiques" class="circle"></a></li>
-                <li><a href="<?= URL ?>adminCalendar"><img src="assets/images/icons/admin/calendar.svg" alt="logo calendrier"class="circle"></a></li>
+                <li><a href="<?= URL ?>dashboard"><img src="assets/images/icons/Admin/dashboard.svg"alt="logo dashboard" class="circle"></a></li>
+                <li><a href="<?= URL ?>user-management"><img src="assets/images/icons/admin/userManagement.svg"alt="logo gestion des utilisateurs" class="circle"></a></li>
+                <li><a href="<?= URL ?>leave-requests"><img src="\assets\images\icons\Employee\demande_conges.svg" alt="logo gestion des utilisateurs" class="circle"></a></li>
+                <li><a href="<?= URL ?>status-requests"><img src="\assets\images\icons\Employee\Traitement des demandes.svg" alt="logo traitement des demandes" class="circle"></a></li>
+                <li><a href="<?= URL ?>treatment-requests"><img src="assets/images/icons/admin/treatmentRequests.svg"alt="logo traitement des demandes" class="circle"></a></li>
+                <li><a href="<?= URL ?>statistics"><img src="assets/images/icons/admin/statistics.svg"alt="logo statistiques" class="circle"></a></li>
+                <li><a href="<?= URL ?>calendar"><img src="assets/images/icons/admin/calendar.svg" alt="logo calendrier"class="circle"></a></li>
             </ul>
         </section>
         <section id="dash-container">
