@@ -7,7 +7,7 @@ use App\Controllers\Common\AbstractController;
 class PasswordController extends AbstractController {
 
     /**
-     * Affiche la page de demande de réinitialisation du mot de passe.
+     * Affiche la page de demande de réinitialisation du mot de passe
      */
     public function passwordForgot(): void
     {
